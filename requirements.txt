@@ -11,3 +11,5 @@ sqlite-utils
 python-jose[cryptography]
 passlib[bcrypt]
 bcrypt==4.0.1
+# TFLite inference runs via tflite_worker.py under Python 3.12 (tensorflow-cpu installed there)
+# tensorflow-cpu  — install separately: py -3.12 -m pip install tensorflow-cpu

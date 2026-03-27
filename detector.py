@@ -1,43 +1,36 @@
 # detector.py — loads TFLite model and runs plant disease inference
 
+import base64
 import io
+import json
 import os
 import random
+import subprocess
+import sys
 
 import numpy as np
 from PIL import Image
 
 # ---------------------------------------------------------------------------
-# TFLite interpreter — try lightweight runtime first, fall back to full TF.
-# If neither is installed the import is skipped; MOCK mode will be forced.
+# Module-level startup: locate model, labels, and Python 3.12 worker
 # ---------------------------------------------------------------------------
-try:
-    from tflite_runtime.interpreter import Interpreter
-except ImportError:
-    try:
-        from tensorflow.lite.python.interpreter import Interpreter
-    except ImportError:
-        Interpreter = None  # no TFLite available — MOCK mode will be enforced
-
-# ---------------------------------------------------------------------------
-# Module-level startup: load model and labels
-# ---------------------------------------------------------------------------
-_MODEL_PATH = "./model/plant_disease.tflite"
+_MODEL_PATH  = "./model/plant_disease.tflite"
 _LABELS_PATH = "./model/labels.txt"
+_WORKER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tflite_worker.py")
+
+# Python 3.12 executable — has tensorflow-cpu installed for TFLite inference
+_PY312 = r"C:\Users\anisb\AppData\Local\Python\pythoncore-3.12-64\python.exe"
 
 # Load labels
 with open(_LABELS_PATH, "r") as _f:
     LABELS = [line.strip() for line in _f if line.strip()]
 print(f"Labels loaded: {len(LABELS)} classes")
 
-# Load model if present and TFLite is available, otherwise enable mock mode
-if os.path.exists(_MODEL_PATH) and Interpreter is not None:
-    _interpreter = Interpreter(model_path=_MODEL_PATH)
-    _interpreter.allocate_tensors()
+# Enable REAL mode if both the model file and the Python 3.12 worker are reachable
+if os.path.exists(_MODEL_PATH) and os.path.exists(_PY312):
     MOCK_MODE = False
     print("Model loaded: REAL mode")
 else:
-    _interpreter = None
     MOCK_MODE = True
     print("WARNING: No model file found — running in MOCK mode")
 
@@ -88,32 +81,22 @@ def detect_disease(image_bytes: bytes) -> dict:
 
 
 def _real_result(image_bytes: bytes) -> dict:
-    """Run actual TFLite inference on the supplied image bytes."""
-    # Preprocess image
-    img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
-    img = img.resize((224, 224))
-    arr = np.array(img, dtype=np.float32) / 255.0
-    arr = np.expand_dims(arr, axis=0)  # shape: [1, 224, 224, 3]
+    """Run TFLite inference via the Python 3.12 subprocess worker."""
+    image_b64 = base64.b64encode(image_bytes).decode("ascii")
 
-    # Run inference
-    input_details = _interpreter.get_input_details()
-    output_details = _interpreter.get_output_details()
-    _interpreter.set_tensor(input_details[0]["index"], arr)
-    _interpreter.invoke()
-    scores = _interpreter.get_tensor(output_details[0]["index"])  # [1, 41]
-    scores = scores.squeeze()  # [41]
+    result = subprocess.run(
+        [_PY312, _WORKER_PATH, _MODEL_PATH, _LABELS_PATH],
+        input=image_b64,          # pass base64 via stdin to avoid Windows arg length limit
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
 
-    # Top-3 predictions
-    top_indices = np.argsort(scores)[::-1][:3]
-    top_3 = [
-        {
-            "label": LABELS[i],
-            "confidence": round(float(scores[i]) * 100, 1),
-        }
-        for i in top_indices
-    ]
+    if result.returncode != 0:
+        raise RuntimeError(f"tflite_worker failed: {result.stderr.strip()}")
 
-    return _build_result(top_3, mode="real")
+    data = json.loads(result.stdout.strip())
+    return _build_result(data["top_3"], mode="real")
 
 
 def _mock_result() -> dict:
