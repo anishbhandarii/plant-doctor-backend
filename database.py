@@ -97,7 +97,7 @@ def get_history(session_id: str, limit: int = 20) -> list:
     """Return up to {limit} most recent scans for a session, newest first."""
     rows = db.execute(
         """
-        SELECT timestamp, crop, disease, health_score, urgency, language, mode, confidence
+        SELECT timestamp, crop, disease, health_score, urgency, language, mode, confidence, image_filename
         FROM scans
         WHERE session_id = ?
         ORDER BY timestamp DESC
@@ -106,7 +106,7 @@ def get_history(session_id: str, limit: int = 20) -> list:
         [session_id, limit]
     ).fetchall()
 
-    columns = ["timestamp", "crop", "disease", "health_score", "urgency", "language", "mode", "confidence"]
+    columns = ["timestamp", "crop", "disease", "health_score", "urgency", "language", "mode", "confidence", "image_filename"]
     return [dict(zip(columns, row)) for row in rows]
 
 

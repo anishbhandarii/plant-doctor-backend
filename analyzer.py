@@ -44,6 +44,7 @@ async def get_treatment(detection: dict, language: str = "english", image_bytes:
     if is_healthy:
         return {
             "status": "healthy",
+            "result_type": "healthy",
             "explanation": f"Your {crop} looks healthy! Keep up the good work.",
             "severity_message": "No disease detected. No action needed.",
             "treatment_steps": [],
@@ -57,6 +58,7 @@ async def get_treatment(detection: dict, language: str = "english", image_bytes:
     if confidence < 60:
         return {
             "status": "unclear",
+            "result_type": "unclear",
             "explanation": "The image was not clear enough to make a confident diagnosis.",
             "severity_message": "Please retake the photo for a better result.",
             "treatment_steps": [],
