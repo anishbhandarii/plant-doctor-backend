@@ -30,7 +30,14 @@ if "scans" not in db.table_names():
         "urgency":      str,
         "spread_risk":  str,
         "mode":         str,   # "real" or "mock"
+        "result_type":  str,   # tier label
     }, pk="id")
+else:
+    # Add result_type column to existing tables that predate this field
+    try:
+        db.execute("ALTER TABLE scans ADD COLUMN result_type TEXT DEFAULT 'model_plus_llm'")
+    except Exception:
+        pass  # column already exists — safe to ignore
 
 # Create users table if it does not already exist
 if "users" not in db.table_names():
@@ -69,6 +76,7 @@ def save_scan(detection: dict, advice: dict, language: str, session_id: str) -> 
         "urgency":      advice.get("urgency", "unknown"),
         "spread_risk":  entry.get("spread_risk", ""),
         "mode":         detection["mode"],
+        "result_type":  advice.get("result_type", "model_plus_llm"),
     }
 
     db["scans"].insert(row)

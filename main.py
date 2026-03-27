@@ -129,7 +129,7 @@ async def diagnose(
 
     try:
         detection = detect_disease(image_bytes)
-        advice    = await get_treatment(detection, language)
+        advice    = await get_treatment(detection, language, image_bytes)
         session_id = str(current_user["user_id"])
         scan_id    = save_scan(detection, advice, language, session_id)
 
