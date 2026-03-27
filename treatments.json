@@ -1,0 +1,759 @@
+{
+  "Apple___Apple_scab": {
+    "common_name": "Apple Scab",
+    "organic": [
+      "Remove and burn all fallen leaves and infected fruit immediately",
+      "Spray neem oil solution: 3 tablespoons neem oil + 1 teaspoon dish soap in 4 litres of water, every 7 days",
+      "Apply compost tea spray: dilute 1 cup compost in 4 litres of water, strain and spray on leaves weekly",
+      "Dust wood ash lightly over leaves and around the base after rain"
+    ],
+    "prevention": [
+      "Rake and destroy fallen leaves every season to remove overwintering spores",
+      "Prune branches to ensure good airflow — keep canopy open",
+      "Water at the base only, never overhead, to keep leaves dry",
+      "Plant resistant apple varieties when replacing old trees"
+    ],
+    "urgency": "medium",
+    "spread_risk": "high",
+    "affects": "leaves, fruit",
+    "local_materials": "neem oil, dish soap, compost, wood ash, water"
+  },
+
+  "Apple___Black_rot": {
+    "common_name": "Apple Black Rot",
+    "organic": [
+      "Cut out all infected branches 15cm below the visible rot and burn them",
+      "Mix 3 tablespoons neem oil + 1 teaspoon dish soap in 4 litres of water, spray every 7 days",
+      "Apply copper sulfate solution: 1 teaspoon per litre of water, spray before and after flowering",
+      "Remove all mummified fruit hanging on branches — they harbour the fungus"
+    ],
+    "prevention": [
+      "Prune dead and weak branches every winter before buds open",
+      "Remove all fallen fruit and leaves from the ground promptly",
+      "Avoid wounding tree bark during farm work — wounds are entry points",
+      "Space trees at least 3 metres apart for good air circulation"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "fruit, bark, leaves",
+    "local_materials": "neem oil, dish soap, copper sulfate, water"
+  },
+
+  "Apple___Cedar_apple_rust": {
+    "common_name": "Apple Cedar Rust",
+    "organic": [
+      "Remove and burn all orange-spotted leaves as soon as they appear",
+      "Spray neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water, every 7 days during spring",
+      "Apply baking soda solution: 1 teaspoon per litre of water, spray in the evening every 5 days",
+      "Spray copper sulfate: 1 teaspoon per litre of water at bud break and after petal fall"
+    ],
+    "prevention": [
+      "Remove any nearby cedar or juniper trees within 100 metres if possible",
+      "Rake and destroy all fallen leaves at the end of every season",
+      "Do not water leaves — irrigate at the base only",
+      "Choose rust-resistant apple varieties for new plantings"
+    ],
+    "urgency": "medium",
+    "spread_risk": "medium",
+    "affects": "leaves, fruit",
+    "local_materials": "neem oil, dish soap, baking soda, copper sulfate, water"
+  },
+
+  "Apple___healthy": {
+    "common_name": "Apple Healthy",
+    "organic": [],
+    "prevention": [
+      "Water regularly at the base, never wetting the leaves",
+      "Add compost around the base every 4 weeks during the growing season",
+      "Check leaves and fruit weekly for early signs of spots or rot",
+      "Prune for open canopy each year to maintain good airflow"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Blueberry___healthy": {
+    "common_name": "Blueberry Healthy",
+    "organic": [],
+    "prevention": [
+      "Water at the base only, keeping leaves dry to prevent fungal issues",
+      "Mulch with 5cm of compost around the base to retain moisture",
+      "Check plants weekly for unusual spots, wilting, or discolouration",
+      "Prune dead stems every spring before new growth starts"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Cherry_(including_sour)___Powdery_mildew": {
+    "common_name": "Cherry Powdery Mildew",
+    "organic": [
+      "Remove all leaves with white powdery coating and burn them away from the farm",
+      "Spray baking soda solution: 1 tablespoon per litre of water + 1 teaspoon dish soap, every 5 days",
+      "Apply neem oil: 2 tablespoons + 1 teaspoon dish soap in 4 litres of water, spray in the evening",
+      "Dust wood ash over affected leaves in the early morning — reapply after rain"
+    ],
+    "prevention": [
+      "Prune dense branches to allow sunlight and airflow through the canopy",
+      "Avoid overhead watering — water at the base only",
+      "Do not over-fertilise with nitrogen — excess nitrogen promotes soft growth that mildew attacks",
+      "Remove fallen leaves promptly at the end of each season"
+    ],
+    "urgency": "medium",
+    "spread_risk": "high",
+    "affects": "leaves, shoots",
+    "local_materials": "baking soda, dish soap, neem oil, wood ash, water"
+  },
+
+  "Cherry_(including_sour)___healthy": {
+    "common_name": "Cherry Healthy",
+    "organic": [],
+    "prevention": [
+      "Water at the base; never wet the leaves or fruit",
+      "Add compost around the base every 3 weeks during the growing season",
+      "Inspect leaves and shoots weekly for white coatings or spots",
+      "Thin crowded branches each year to maintain good airflow"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {
+    "common_name": "Corn Gray Leaf Spot",
+    "organic": [
+      "Remove and burn heavily infected lower leaves at the first sign of long grey lesions",
+      "Spray neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water, every 7 days",
+      "Apply compost tea spray: 1 cup compost steeped in 4 litres of water overnight, strain and spray weekly",
+      "Avoid overhead irrigation — switch to furrow or drip irrigation at the base"
+    ],
+    "prevention": [
+      "Rotate maize with legumes or other non-host crops each season",
+      "Leave at least 30cm between rows for good air circulation",
+      "Till crop residues into soil after harvest to reduce fungal spores",
+      "Plant varieties with moderate resistance to grey leaf spot where available"
+    ],
+    "urgency": "medium",
+    "spread_risk": "high",
+    "affects": "leaves",
+    "local_materials": "neem oil, dish soap, compost, water"
+  },
+
+  "Corn_(maize)___Common_rust": {
+    "common_name": "Corn Common Rust",
+    "organic": [
+      "Remove and destroy leaves with reddish-brown pustules as soon as they appear",
+      "Spray neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water, every 7 days",
+      "Dust wood ash over leaves early in the morning to discourage spore germination",
+      "Apply garlic spray: blend 10 garlic cloves in 1 litre of water, strain, dilute to 4 litres, spray weekly"
+    ],
+    "prevention": [
+      "Plant rust-resistant maize varieties whenever available in your area",
+      "Rotate maize fields every season — never plant maize in the same plot twice in a row",
+      "Avoid dense planting — space rows at least 30cm apart",
+      "Destroy all crop residue after harvest to remove overwintering spores"
+    ],
+    "urgency": "medium",
+    "spread_risk": "high",
+    "affects": "leaves",
+    "local_materials": "neem oil, dish soap, wood ash, garlic, water"
+  },
+
+  "Corn_(maize)___Northern_Leaf_Blight": {
+    "common_name": "Corn Northern Leaf Blight",
+    "organic": [
+      "Cut off and burn leaves showing long cigar-shaped grey-green lesions",
+      "Spray neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Apply copper sulfate: 1 teaspoon per litre of water, spray at first sign of symptoms",
+      "Spray compost tea: steep 1 cup compost in 4 litres water for 24 hours, strain and apply weekly"
+    ],
+    "prevention": [
+      "Rotate maize with soybeans or groundnuts every season",
+      "Plough crop debris deep into the soil after harvest",
+      "Space plants at least 25cm apart within rows to reduce humidity",
+      "Select blight-tolerant maize varieties when purchasing seed"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "leaves",
+    "local_materials": "neem oil, dish soap, copper sulfate, compost, water"
+  },
+
+  "Corn_(maize)___healthy": {
+    "common_name": "Corn Healthy",
+    "organic": [],
+    "prevention": [
+      "Water at the base of plants; avoid wetting leaves",
+      "Add compost around the base every 3 weeks for strong growth",
+      "Walk through the field weekly and check for early lesions or rust pustules",
+      "Rotate with a different crop family each season"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Grape___Black_rot": {
+    "common_name": "Grape Black Rot",
+    "organic": [
+      "Remove all infected berries, leaves and mummified fruit and burn them",
+      "Spray copper sulfate: 1 teaspoon per litre of water every 7 days from bud break through harvest",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water, every 7 days",
+      "Remove all crop debris from the ground at end of season and bury or burn it"
+    ],
+    "prevention": [
+      "Train vines on a trellis to keep fruit and leaves off the ground",
+      "Prune heavily each winter to open the canopy and improve airflow",
+      "Water at the base only — overhead watering spreads spores rapidly",
+      "Sanitise pruning tools with diluted dish soap between cuts"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "fruit, leaves, shoots",
+    "local_materials": "copper sulfate, neem oil, dish soap, water"
+  },
+
+  "Grape___Esca_(Black_Measles)": {
+    "common_name": "Grape Esca (Black Measles)",
+    "organic": [
+      "Prune out all wood showing dark internal streaking and burn it immediately",
+      "Paint pruning wounds with a thick paste of wood ash mixed with water to seal cuts",
+      "Apply neem oil spray: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water monthly",
+      "Avoid any wounding of the vine during the wet season when fungi spread most easily"
+    ],
+    "prevention": [
+      "Prune only during dry weather and seal all large cuts immediately",
+      "Sanitise pruning shears with dish soap solution between every vine",
+      "Remove and burn severely infected vines to protect neighbouring plants",
+      "Maintain good soil drainage around vine roots — waterlogged roots worsen esca"
+    ],
+    "urgency": "high",
+    "spread_risk": "medium",
+    "affects": "wood, leaves, fruit",
+    "local_materials": "neem oil, dish soap, wood ash, water"
+  },
+
+  "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": {
+    "common_name": "Grape Leaf Blight",
+    "organic": [
+      "Remove and burn all leaves showing dark angular spots immediately",
+      "Spray neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Apply baking soda solution: 1 tablespoon per litre of water, spray in the evening every 5 days",
+      "Spray copper sulfate: 1 teaspoon per litre of water at the first sign of symptoms"
+    ],
+    "prevention": [
+      "Trellis vines to keep leaves elevated and allow good airflow",
+      "Remove fallen leaves from around the base promptly",
+      "Water only at the base; never overhead",
+      "Open up dense canopy by pruning each winter"
+    ],
+    "urgency": "medium",
+    "spread_risk": "medium",
+    "affects": "leaves",
+    "local_materials": "neem oil, dish soap, baking soda, copper sulfate, water"
+  },
+
+  "Grape___healthy": {
+    "common_name": "Grape Healthy",
+    "organic": [],
+    "prevention": [
+      "Water at the base only; wet leaves encourage fungal disease",
+      "Prune yearly to keep canopy open and reduce humidity inside the vine",
+      "Check leaves and berries every week for early spots or discolouration",
+      "Remove fallen leaves from the ground each season to reduce spore load"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Orange___Haunglongbing_(Citrus_greening)": {
+    "common_name": "Orange Citrus Greening (HLB)",
+    "organic": [
+      "Remove and burn all branches and trees showing yellowing, mottled leaves and small lopsided fruit — there is no cure",
+      "Apply neem oil spray: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days to reduce psyllid insect vectors",
+      "Spray garlic extract: blend 10 cloves in 1 litre water, strain, dilute to 4 litres, spray weekly to repel psyllids",
+      "Add compost 5cm deep around the base to strengthen tree immunity and root health"
+    ],
+    "prevention": [
+      "Never move budwood or plant material from infected areas to healthy farms",
+      "Inspect trees weekly for the Asian citrus psyllid insect — the sole carrier of HLB",
+      "Remove infected trees immediately to prevent spread to healthy trees",
+      "Buy certified disease-free seedlings from trusted nurseries only"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "whole tree, fruit, leaves",
+    "local_materials": "neem oil, dish soap, garlic, compost, water"
+  },
+
+  "Peach___Bacterial_spot": {
+    "common_name": "Peach Bacterial Spot",
+    "organic": [
+      "Remove and burn all infected leaves, shoots and fruit showing water-soaked spots",
+      "Spray copper sulfate: 1 teaspoon per litre of water, apply every 7 days starting at bud swell",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Avoid any pruning or farm work during wet or windy weather when bacteria spread"
+    ],
+    "prevention": [
+      "Water at the base only — wet leaves and fruit are rapidly infected",
+      "Prune to keep the canopy open and reduce humidity around leaves",
+      "Plant windbreaks around the orchard — strong winds carry the bacteria",
+      "Sanitise pruning tools between each tree with dish soap solution"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "leaves, fruit, shoots",
+    "local_materials": "copper sulfate, neem oil, dish soap, water"
+  },
+
+  "Peach___healthy": {
+    "common_name": "Peach Healthy",
+    "organic": [],
+    "prevention": [
+      "Water at the base; never wet the leaves or fruit",
+      "Add 5cm of compost around the base every month during the growing season",
+      "Walk through the orchard weekly and check for spots, cracking or wilting",
+      "Prune dead or crowded branches each winter to improve airflow"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Pepper,_bell___Bacterial_spot": {
+    "common_name": "Bell Pepper Bacterial Spot",
+    "organic": [
+      "Remove and burn all leaves and fruit with water-soaked or raised dark spots",
+      "Spray copper sulfate: 1 teaspoon per litre of water every 7 days",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Avoid working in the field when plants are wet — this spreads bacteria rapidly"
+    ],
+    "prevention": [
+      "Use only certified disease-free seed or seedlings from trusted suppliers",
+      "Rotate peppers with non-solanaceous crops every season",
+      "Water at the base; drip irrigation is strongly preferred over overhead watering",
+      "Space plants at least 45cm apart to allow air circulation and reduce humidity"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "leaves, fruit, stems",
+    "local_materials": "copper sulfate, neem oil, dish soap, water"
+  },
+
+  "Pepper,_bell___healthy": {
+    "common_name": "Bell Pepper Healthy",
+    "organic": [],
+    "prevention": [
+      "Water at the base only and avoid wetting leaves",
+      "Add compost around the base every 3 weeks during the growing season",
+      "Inspect plants weekly for dark spots, lesions or unusual discolouration",
+      "Rotate peppers with a different crop family each season"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Potato___Early_blight": {
+    "common_name": "Potato Early Blight",
+    "organic": [
+      "Remove and burn all leaves showing dark brown concentric ring spots immediately",
+      "Spray neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Apply baking soda solution: 1 tablespoon per litre of water, spray in the evening every 5 days",
+      "Dust wood ash lightly over leaves early in the morning after removing infected material"
+    ],
+    "prevention": [
+      "Rotate potatoes with maize or beans — never plant potatoes in the same plot two seasons running",
+      "Water at the base in the early morning; never wet leaves in the evening",
+      "Space plants at least 40cm apart and mound soil around stems for airflow",
+      "Destroy all crop debris after harvest — early blight overwinters in old plant material"
+    ],
+    "urgency": "medium",
+    "spread_risk": "high",
+    "affects": "leaves, stems, tubers",
+    "local_materials": "neem oil, dish soap, baking soda, wood ash, water"
+  },
+
+  "Potato___Late_blight": {
+    "common_name": "Potato Late Blight",
+    "organic": [
+      "Remove and burn all infected plants immediately — do not compost them",
+      "Spray copper sulfate: 1 teaspoon per litre of water every 5 days at the first sign of symptoms",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 5 days",
+      "Hill soil high around plant stems to protect developing tubers from infected runoff"
+    ],
+    "prevention": [
+      "Plant only certified disease-free seed potatoes",
+      "Rotate potatoes with cereals or legumes — never repeat potatoes in the same field",
+      "Avoid overhead irrigation; water only at the base in the morning",
+      "Harvest promptly when tops die back — leaving tubers in wet soil causes rot"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "leaves, stems, tubers",
+    "local_materials": "copper sulfate, neem oil, dish soap, water"
+  },
+
+  "Potato___healthy": {
+    "common_name": "Potato Healthy",
+    "organic": [],
+    "prevention": [
+      "Water at the base in the morning; never let leaves stay wet overnight",
+      "Hill soil around stems every 2 weeks to support tuber development",
+      "Walk the field weekly and check leaves for dark spots or water-soaked lesions",
+      "Rotate with a non-solanaceous crop every season"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Raspberry___healthy": {
+    "common_name": "Raspberry Healthy",
+    "organic": [],
+    "prevention": [
+      "Water at the base only; wet canes are prone to fungal disease",
+      "Add 5cm of compost mulch around the base each spring",
+      "Prune out old fruited canes each year to encourage strong new growth",
+      "Inspect leaves and canes weekly for early spots, rust or mildew"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Rice___Bacterial_leaf_blight": {
+    "common_name": "Rice Bacterial Leaf Blight",
+    "organic": [
+      "Remove and burn all infected tillers showing water-soaked yellow streaks from leaf tips",
+      "Drain the field completely for 3 to 5 days — the bacteria thrive in standing water",
+      "Spray copper sulfate: 1 teaspoon per litre of water on the remaining healthy crop every 7 days",
+      "Apply garlic extract: crush 10 garlic cloves in 1 litre of water, strain, dilute to 4 litres, spray every 5 days"
+    ],
+    "prevention": [
+      "Use certified disease-free seed — soak seed in 1 teaspoon copper sulfate per litre of water for 8 hours before planting",
+      "Avoid excess nitrogen fertiliser — it promotes lush soft growth that bacteria attack",
+      "Maintain good drainage in paddy fields; do not let water stagnate for long periods",
+      "Rotate rice with pulses or vegetables every second season to break the disease cycle"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "leaves, tillers",
+    "local_materials": "copper sulfate, garlic, water"
+  },
+
+  "Rice___Brown_spot": {
+    "common_name": "Rice Brown Spot",
+    "organic": [
+      "Remove and burn heavily spotted leaves to reduce spore load in the field",
+      "Spray neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Apply wood ash: broadcast 50kg per acre on the soil around plants to improve potassium and reduce fungal pressure",
+      "Spray compost tea: steep 2 cups of compost in 4 litres water for 24 hours, strain and spray every 7 days"
+    ],
+    "prevention": [
+      "Treat seeds before planting: soak in warm water (52°C) for 10 minutes or in salt water (1 cup salt per 4 litres) to discard weak seed",
+      "Ensure adequate potassium in soil by adding wood ash or compost before transplanting",
+      "Maintain proper water depth in paddy — 5cm standing water is optimal; avoid drought stress",
+      "Rotate rice with legumes every second season to restore soil nutrients that reduce brown spot severity"
+    ],
+    "urgency": "medium",
+    "spread_risk": "medium",
+    "affects": "leaves, grains",
+    "local_materials": "neem oil, dish soap, wood ash, compost, water"
+  },
+
+  "Rice___Leaf_smut": {
+    "common_name": "Rice Leaf Smut",
+    "organic": [
+      "Remove infected tillers showing black powdery masses on leaves and burn them away from the field",
+      "Treat seed before planting: soak in 1 teaspoon copper sulfate per litre of water for 8 hours, rinse and dry",
+      "Spray neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days during tillering",
+      "Apply wood ash broadcast at 50kg per acre to reduce soil fungal load before transplanting"
+    ],
+    "prevention": [
+      "Use certified clean seed from a trusted government or NGO seed supplier",
+      "Avoid waterlogging — maintain proper drainage channels around paddy bunds",
+      "Do not reuse seed from infected crops — smut spreads through infected seed",
+      "Rotate rice with vegetables or pulses every second season to break the smut cycle"
+    ],
+    "urgency": "medium",
+    "spread_risk": "medium",
+    "affects": "leaves, grains",
+    "local_materials": "copper sulfate, neem oil, dish soap, wood ash, water"
+  },
+
+  "Soybean___healthy": {
+    "common_name": "Soybean Healthy",
+    "organic": [],
+    "prevention": [
+      "Inoculate seed with rhizobium bacteria before planting to fix nitrogen naturally",
+      "Water at the base; avoid wetting leaves especially in humid weather",
+      "Walk rows weekly and check for yellowing, lesions or pest damage",
+      "Rotate soybeans with maize or sorghum each season"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Squash___Powdery_mildew": {
+    "common_name": "Squash Powdery Mildew",
+    "organic": [
+      "Remove all leaves covered in white powdery coating and burn them — never compost them",
+      "Spray baking soda solution: 1 tablespoon per litre of water + 1 teaspoon dish soap, every 5 days",
+      "Apply neem oil: 2 tablespoons + 1 teaspoon dish soap in 4 litres of water, spray in the evening every 7 days",
+      "Dust wood ash lightly over infected leaves in the early morning — reapply after rain"
+    ],
+    "prevention": [
+      "Space plants at least 60cm apart to allow good airflow between vines",
+      "Train vines on a trellis or bamboo frame to lift leaves off the ground",
+      "Avoid overhead watering — water only at the base in the morning",
+      "Remove old vines and leaves at the end of the season to eliminate overwintering spores"
+    ],
+    "urgency": "medium",
+    "spread_risk": "high",
+    "affects": "leaves, stems",
+    "local_materials": "baking soda, dish soap, neem oil, wood ash, water"
+  },
+
+  "Strawberry___Leaf_scorch": {
+    "common_name": "Strawberry Leaf Scorch",
+    "organic": [
+      "Remove and burn all leaves showing small dark purple spots with scorched brown edges",
+      "Spray neem oil: 2 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Apply copper sulfate spray: 1 teaspoon per litre of water at the start of symptoms",
+      "Thin plants by removing old and densely packed leaves to improve airflow within the bed"
+    ],
+    "prevention": [
+      "Plant strawberries in raised beds or rows with at least 30cm between plants",
+      "Water at the base with drip lines — overhead watering spreads leaf scorch rapidly",
+      "Remove and destroy old leaves after harvest each season",
+      "Rotate strawberry beds every 3 years and avoid replanting in soil that had scorch"
+    ],
+    "urgency": "medium",
+    "spread_risk": "medium",
+    "affects": "leaves",
+    "local_materials": "neem oil, dish soap, copper sulfate, water"
+  },
+
+  "Strawberry___healthy": {
+    "common_name": "Strawberry Healthy",
+    "organic": [],
+    "prevention": [
+      "Water at the base only; wet leaves encourage fungal leaf diseases",
+      "Mulch with 3cm of straw around plants to keep fruit clean and moisture stable",
+      "Inspect leaves weekly for dark spots or brown margins",
+      "Remove runner plants that crowd the main bed and reduce airflow"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  },
+
+  "Tomato___Bacterial_spot": {
+    "common_name": "Tomato Bacterial Spot",
+    "organic": [
+      "Remove and burn all leaves and fruit with water-soaked dark spots immediately",
+      "Spray copper sulfate: 1 teaspoon per litre of water every 7 days",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Avoid all farm work when plants are wet — bacteria spread rapidly on wet hands and tools"
+    ],
+    "prevention": [
+      "Use certified disease-free seed — soak seed in 1 teaspoon copper sulfate per litre for 2 hours before sowing",
+      "Water only at the base; never use overhead irrigation on tomatoes",
+      "Rotate tomatoes with maize or beans — never plant in the same bed two seasons running",
+      "Space plants at least 50cm apart for good airflow"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "leaves, fruit, stems",
+    "local_materials": "copper sulfate, neem oil, dish soap, water"
+  },
+
+  "Tomato___Early_blight": {
+    "common_name": "Tomato Early Blight",
+    "organic": [
+      "Remove all infected leaves and burn them away from the field",
+      "Mix 3 tablespoons of neem oil and 1 teaspoon dish soap in 4 litres of water, spray every 5 days",
+      "Sprinkle wood ash lightly around the base of plants",
+      "Spray baking soda solution: 1 teaspoon per litre of water, apply in the evening"
+    ],
+    "prevention": [
+      "Rotate crops every season — never plant tomatoes in the same soil twice",
+      "Water at the base only, never wet the leaves",
+      "Space plants at least 50cm apart for good air circulation"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "leaves",
+    "local_materials": "neem oil, wood ash, baking soda, dish soap, water"
+  },
+
+  "Tomato___Late_blight": {
+    "common_name": "Tomato Late Blight",
+    "organic": [
+      "Remove and burn all infected plants immediately — never leave them in the field",
+      "Spray copper sulfate: 1 teaspoon per litre of water every 5 days at first sign of symptoms",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 5 days",
+      "Avoid working in the field during rain or heavy dew — this spreads the disease rapidly"
+    ],
+    "prevention": [
+      "Never plant tomatoes near potatoes — late blight crosses between both crops",
+      "Water at the base in the morning only; leaves must be dry by evening",
+      "Remove and destroy all plant debris at the end of every season",
+      "Stake plants so leaves are off the ground and get good airflow"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "leaves, stems, fruit",
+    "local_materials": "copper sulfate, neem oil, dish soap, water"
+  },
+
+  "Tomato___Leaf_Mold": {
+    "common_name": "Tomato Leaf Mold",
+    "organic": [
+      "Remove leaves with yellow patches above and olive-green mould below and burn them",
+      "Spray baking soda: 1 tablespoon per litre of water + 1 teaspoon dish soap every 5 days",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Increase airflow by removing lower leaves and staking plants taller"
+    ],
+    "prevention": [
+      "Avoid growing tomatoes in humid enclosed spaces — leaf mold thrives in high humidity",
+      "Water at the base only and never in the evening",
+      "Space plants at least 50cm apart and stake all branches",
+      "Remove all plant debris after harvest and till the soil deeply"
+    ],
+    "urgency": "medium",
+    "spread_risk": "high",
+    "affects": "leaves",
+    "local_materials": "baking soda, dish soap, neem oil, water"
+  },
+
+  "Tomato___Septoria_leaf_spot": {
+    "common_name": "Tomato Septoria Leaf Spot",
+    "organic": [
+      "Remove all lower leaves showing small spots with dark borders and burn them immediately",
+      "Spray copper sulfate: 1 teaspoon per litre of water every 7 days",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Mulch heavily around the base with 5cm of straw to prevent soil spores splashing onto lower leaves"
+    ],
+    "prevention": [
+      "Rotate tomatoes with a non-solanaceous crop each season",
+      "Stake plants to keep foliage off the ground and allow airflow",
+      "Water at the base only — overhead irrigation spreads Septoria spores rapidly",
+      "Remove all dead leaves and crop debris at the end of the season"
+    ],
+    "urgency": "medium",
+    "spread_risk": "high",
+    "affects": "leaves",
+    "local_materials": "copper sulfate, neem oil, dish soap, water"
+  },
+
+  "Tomato___Spider_mites Two-spotted_spider_mite": {
+    "common_name": "Tomato Spider Mites",
+    "organic": [
+      "Spray leaves forcefully with plain water to knock mites off — repeat daily for 5 days",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water, spray every 3 days",
+      "Spray garlic chili extract: blend 5 garlic cloves + 2 chilies in 1 litre water, strain, dilute to 4 litres, spray every 3 days",
+      "Dust wood ash over leaves in the early morning — mites dislike dry alkaline surfaces"
+    ],
+    "prevention": [
+      "Keep plants well-watered — stressed dry plants are most vulnerable to mite attacks",
+      "Avoid dusty conditions around the field; dust coats leaves and harbours mites",
+      "Inspect the underside of leaves weekly for tiny dots or webbing",
+      "Remove heavily infested leaves promptly before mites spread to the whole plant"
+    ],
+    "urgency": "medium",
+    "spread_risk": "high",
+    "affects": "leaves",
+    "local_materials": "neem oil, dish soap, garlic, chili, wood ash, water"
+  },
+
+  "Tomato___Target_Spot": {
+    "common_name": "Tomato Target Spot",
+    "organic": [
+      "Remove and burn all leaves with dark concentric ring spots — start from the bottom of the plant",
+      "Spray copper sulfate: 1 teaspoon per litre of water every 7 days",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days",
+      "Mulch with 5cm of straw or dry grass around the base to prevent soil-splash spreading spores"
+    ],
+    "prevention": [
+      "Stake plants and remove lower leaves to keep foliage off the ground",
+      "Water at the base only in the morning",
+      "Rotate tomatoes with a different crop family each season",
+      "Remove all crop debris after harvest and till the soil to bury remaining spores"
+    ],
+    "urgency": "medium",
+    "spread_risk": "medium",
+    "affects": "leaves, fruit, stems",
+    "local_materials": "copper sulfate, neem oil, dish soap, water"
+  },
+
+  "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+    "common_name": "Tomato Yellow Leaf Curl Virus",
+    "organic": [
+      "Remove and burn all plants showing yellowed, curled leaves — there is no cure once infected",
+      "Spray neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 5 days to kill whitefly vectors",
+      "Apply garlic-chili spray: blend 5 garlic cloves + 3 chilies in 1 litre water, strain, dilute to 4 litres, spray every 5 days",
+      "Place yellow sticky traps (coated with grease or neem oil) around the field to catch whiteflies"
+    ],
+    "prevention": [
+      "Control whitefly populations from the start of the season — they are the sole carriers of this virus",
+      "Use reflective mulch around the base of plants to confuse and repel whiteflies",
+      "Plant tomatoes away from other solanaceous crops that may harbour whiteflies",
+      "Remove and burn infected plants immediately to prevent whiteflies picking up and spreading the virus"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "whole plant",
+    "local_materials": "neem oil, dish soap, garlic, chili, water"
+  },
+
+  "Tomato___Tomato_mosaic_virus": {
+    "common_name": "Tomato Mosaic Virus",
+    "organic": [
+      "Remove and burn all plants with mottled yellow-green mosaic patterns on leaves immediately",
+      "Wash hands thoroughly with soap and water before and after handling any plant",
+      "Disinfect all tools between plants by dipping in a solution of 1 tablespoon dish soap per litre of water",
+      "Apply neem oil: 3 tablespoons + 1 teaspoon dish soap in 4 litres of water every 7 days to reduce aphid vectors"
+    ],
+    "prevention": [
+      "Use certified virus-free seed — do not save seed from any plant that shows mosaicing",
+      "Never touch plants after handling tobacco products — tobacco mosaic virus can infect tomatoes",
+      "Control aphids early using neem oil spray — aphids spread mosaic viruses between plants",
+      "Remove weeds around the field that may carry the virus as reservoir hosts"
+    ],
+    "urgency": "high",
+    "spread_risk": "high",
+    "affects": "whole plant",
+    "local_materials": "neem oil, dish soap, water"
+  },
+
+  "Tomato___healthy": {
+    "common_name": "Tomato Healthy",
+    "organic": [],
+    "prevention": [
+      "Water regularly at the base, not on leaves",
+      "Add compost around the base every 3 weeks",
+      "Check leaves weekly for early signs of disease"
+    ],
+    "urgency": "none",
+    "spread_risk": "none",
+    "affects": "none",
+    "local_materials": ""
+  }
+}

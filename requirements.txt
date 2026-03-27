@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-multipart
+anthropic
+python-dotenv
+pillow
+numpy
+aiofiles
+slowapi
+sqlite-utils
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt==4.0.1
