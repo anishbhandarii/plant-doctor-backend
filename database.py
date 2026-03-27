@@ -33,11 +33,16 @@ if "scans" not in db.table_names():
         "result_type":  str,   # tier label
     }, pk="id")
 else:
-    # Add result_type column to existing tables that predate this field
-    try:
-        db.execute("ALTER TABLE scans ADD COLUMN result_type TEXT DEFAULT 'model_plus_llm'")
-    except Exception:
-        pass  # column already exists — safe to ignore
+    # Add columns introduced after the initial schema — ignore if already present
+    for ddl in [
+        "ALTER TABLE scans ADD COLUMN result_type TEXT DEFAULT 'model_plus_llm'",
+        "ALTER TABLE scans ADD COLUMN image_filename TEXT DEFAULT NULL",
+        "ALTER TABLE scans ADD COLUMN compressed_size_kb REAL DEFAULT NULL",
+    ]:
+        try:
+            db.execute(ddl)
+        except Exception:
+            pass  # column already exists — safe to ignore
 
 # Create users table if it does not already exist
 if "users" not in db.table_names():
@@ -57,7 +62,7 @@ print(f"Database ready: {DB_PATH}")
 # ---------------------------------------------------------------------------
 # Function 1: save a scan record
 # ---------------------------------------------------------------------------
-def save_scan(detection: dict, advice: dict, language: str, session_id: str) -> int:
+def save_scan(detection: dict, advice: dict, language: str, session_id: str, image_info: dict = None) -> int:
     """Insert one scan result into the scans table and return its new id."""
     # Pull spread_risk from the treatments data if analyzer loaded it,
     # otherwise leave blank — we import here to avoid circular issues at top level
@@ -65,18 +70,20 @@ def save_scan(detection: dict, advice: dict, language: str, session_id: str) -> 
     entry = TREATMENTS.get(detection.get("raw_label", ""), {})
 
     row = {
-        "timestamp":    datetime.now(timezone.utc).isoformat(),
-        "session_id":   session_id,
-        "crop":         detection["crop"],
-        "disease":      detection["disease"],
-        "confidence":   detection["confidence"],
-        "health_score": detection["health_score"],
-        "is_healthy":   1 if detection["is_healthy"] else 0,
-        "language":     language,
-        "urgency":      advice.get("urgency", "unknown"),
-        "spread_risk":  entry.get("spread_risk", ""),
-        "mode":         detection["mode"],
-        "result_type":  advice.get("result_type", "model_plus_llm"),
+        "timestamp":          datetime.now(timezone.utc).isoformat(),
+        "session_id":         session_id,
+        "crop":               detection["crop"],
+        "disease":            detection["disease"],
+        "confidence":         detection["confidence"],
+        "health_score":       detection["health_score"],
+        "is_healthy":         1 if detection["is_healthy"] else 0,
+        "language":           language,
+        "urgency":            advice.get("urgency", "unknown"),
+        "spread_risk":        entry.get("spread_risk", ""),
+        "mode":               detection["mode"],
+        "result_type":        advice.get("result_type", "model_plus_llm"),
+        "image_filename":     image_info.get("image_filename") if image_info else None,
+        "compressed_size_kb": image_info.get("compressed_size_kb") if image_info else None,
     }
 
     db["scans"].insert(row)

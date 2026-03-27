@@ -20,6 +20,8 @@ from analyzer import get_cache_stats, get_treatment
 from auth import create_token, get_current_user, hash_password, verify_password
 from database import create_user, get_history, get_stats, get_user_by_email, save_scan
 from detector import detect_disease, get_mode
+from fastapi.responses import FileResponse
+from storage import get_image_path, save_image
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -128,18 +130,26 @@ async def diagnose(
         raise HTTPException(status_code=400, detail="Image too large. Max 5MB.")
 
     try:
-        detection = detect_disease(image_bytes)
-        advice    = await get_treatment(detection, language, image_bytes)
-        session_id = str(current_user["user_id"])
-        scan_id    = save_scan(detection, advice, language, session_id)
+        detection  = detect_disease(image_bytes)
+        advice     = await get_treatment(detection, language, image_bytes)
+        user_id    = current_user["user_id"]
+        session_id = str(user_id)
+
+        # Save image first (use unix timestamp as temp scan_id), then save scan record
+        image_info = save_image(image_bytes, user_id, int(datetime.now().timestamp()))
+        scan_id    = save_scan(detection, advice, language, session_id, image_info)
 
         return {
-            "scan_id":   scan_id,
-            "timestamp": datetime.now(timezone.utc).isoformat(),
-            "user_id":   current_user["user_id"],
-            "language":  language,
+            "scan_id":            scan_id,
+            "timestamp":          datetime.now(timezone.utc).isoformat(),
+            "user_id":            user_id,
+            "language":           language,
             **detection,
             **advice,
+            "image_filename":     image_info["image_filename"],
+            "original_size_kb":   image_info["original_size_kb"],
+            "compressed_size_kb": image_info["compressed_size_kb"],
+            "compression_ratio":  image_info["compression_ratio"],
         }
     except HTTPException:
         raise
@@ -163,6 +173,15 @@ async def history(current_user: dict = Depends(get_current_user)):
 async def me(current_user: dict = Depends(get_current_user)):
     """Return the current user's basic info."""
     return {"user_id": current_user["user_id"], "email": current_user["email"]}
+
+
+@app.get("/images/{filename}")
+async def serve_image(filename: str, current_user: dict = Depends(get_current_user)):
+    """Return a saved leaf image by filename. Requires login."""
+    path = get_image_path(filename)
+    if path is None:
+        raise HTTPException(status_code=404, detail="Image not found")
+    return FileResponse(path, media_type="image/jpeg")
 
 
 @app.get("/stats")
