@@ -53,7 +53,12 @@ def decode_token(token: str) -> dict:
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Invalid token"
             )
-        return {"email": email, "user_id": payload.get("user_id")}
+        return {
+            "email":              email,
+            "user_id":            payload.get("user_id"),
+            "role":               payload.get("role", "farmer"),
+            "preferred_language": payload.get("preferred_language", "english"),
+        }
     except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -62,8 +67,18 @@ def decode_token(token: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# FastAPI dependency — inject into protected routes
+# FastAPI dependencies — inject into protected routes
 # ---------------------------------------------------------------------------
 async def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:
     """FastAPI dependency that extracts and validates the bearer token."""
     return decode_token(token)
+
+
+async def require_admin(current_user: dict = Depends(get_current_user)) -> dict:
+    """FastAPI dependency that requires the caller to have the admin role."""
+    if current_user["role"] != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Access denied. Admin account required."
+        )
+    return current_user

@@ -17,8 +17,12 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
 
 from analyzer import get_cache_stats, get_treatment
-from auth import create_token, get_current_user, hash_password, verify_password
-from database import create_user, get_history, get_stats, get_user_by_email, save_scan
+from auth import create_token, get_current_user, hash_password, require_admin, verify_password
+from database import (
+    create_user, get_all_users, get_history, get_stats,
+    get_user_by_email, get_user_by_id, get_user_count_by_role,
+    save_scan, toggle_user_active, update_user_language,
+)
 from detector import detect_disease, get_mode
 from fastapi.responses import FileResponse
 from storage import get_image_path, save_image
@@ -28,6 +32,7 @@ from storage import get_image_path, save_image
 # ---------------------------------------------------------------------------
 ALLOWED_TYPES = {"image/jpeg", "image/png", "image/jpg", "image/webp"}
 MAX_SIZE = int(os.getenv("MAX_FILE_SIZE_MB", "5")) * 1024 * 1024
+SUPPORTED_LANGUAGES = ["english", "hindi", "nepali", "french", "bengali", "punjabi", "tamil"]
 
 # ---------------------------------------------------------------------------
 # Pydantic models
@@ -36,6 +41,9 @@ class RegisterRequest(BaseModel):
     email: str
     password: str
     full_name: str
+    role: str = "farmer"
+    preferred_language: str = "english"
+    region: str = None
 
 class LoginResponse(BaseModel):
     access_token: str
@@ -43,6 +51,11 @@ class LoginResponse(BaseModel):
     user_id: int
     email: str
     full_name: str
+    role: str
+    preferred_language: str
+
+class LanguageUpdateRequest(BaseModel):
+    language: str
 
 # ---------------------------------------------------------------------------
 # App setup
@@ -80,11 +93,18 @@ async def register(body: RegisterRequest):
     """Create a new user account."""
     if len(body.password) < 8:
         raise HTTPException(status_code=400, detail="Password must be at least 8 characters")
+    if body.role not in ["farmer", "admin"]:
+        raise HTTPException(status_code=400, detail="Role must be farmer or admin")
+    if body.preferred_language not in SUPPORTED_LANGUAGES:
+        raise HTTPException(status_code=400, detail=f"Language must be one of: {SUPPORTED_LANGUAGES}")
     try:
         user = create_user(
             email=body.email,
             password_hash=hash_password(body.password),
             full_name=body.full_name,
+            role=body.role,
+            preferred_language=body.preferred_language,
+            region=body.region,
         )
     except ValueError:
         raise HTTPException(status_code=400, detail="Email already registered")
@@ -99,13 +119,20 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
         raise HTTPException(status_code=401, detail="Invalid email or password")
     if not verify_password(form.password, user["password_hash"]):
         raise HTTPException(status_code=401, detail="Invalid email or password")
-    token = create_token({"sub": user["email"], "user_id": user["id"]})
+    token = create_token({
+        "sub":                user["email"],
+        "user_id":            user["id"],
+        "role":               user.get("role", "farmer"),
+        "preferred_language": user.get("preferred_language", "english"),
+    })
     return LoginResponse(
         access_token=token,
         token_type="bearer",
         user_id=user["id"],
         email=user["email"],
         full_name=user["full_name"],
+        role=user.get("role", "farmer"),
+        preferred_language=user.get("preferred_language", "english"),
     )
 
 # ---------------------------------------------------------------------------
@@ -116,10 +143,13 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
 async def diagnose(
     request: Request,
     file: UploadFile = File(...),
-    language: str = Form(default="english"),
+    language: str = Form(default=None),
     current_user: dict = Depends(get_current_user),
 ):
     """Accept a leaf image, run disease detection, return organic treatment advice."""
+    # Use form language if provided, else fall back to user's preferred language
+    if not language:
+        language = current_user.get("preferred_language", "english")
     # Validate file type
     if file.content_type not in ALLOWED_TYPES:
         raise HTTPException(status_code=400, detail="Only JPEG and PNG images are accepted")
@@ -171,8 +201,34 @@ async def history(current_user: dict = Depends(get_current_user)):
 
 @app.get("/me")
 async def me(current_user: dict = Depends(get_current_user)):
-    """Return the current user's basic info."""
-    return {"user_id": current_user["user_id"], "email": current_user["email"]}
+    """Return the current user's basic info including role and language."""
+    user = get_user_by_id(current_user["user_id"])
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {
+        "user_id":            user["id"],
+        "email":              user["email"],
+        "full_name":          user["full_name"],
+        "role":               user.get("role", "farmer"),
+        "preferred_language": user.get("preferred_language", "english"),
+        "region":             user.get("region"),
+    }
+
+
+@app.patch("/me/language")
+async def update_language(body: LanguageUpdateRequest, current_user: dict = Depends(get_current_user)):
+    """Update the current user's preferred language."""
+    if body.language not in SUPPORTED_LANGUAGES:
+        raise HTTPException(status_code=400, detail=f"Language must be one of: {SUPPORTED_LANGUAGES}")
+    user = update_user_language(current_user["user_id"], body.language)
+    return {
+        "user_id":            user["id"],
+        "email":              user["email"],
+        "full_name":          user["full_name"],
+        "role":               user.get("role", "farmer"),
+        "preferred_language": user.get("preferred_language", "english"),
+        "region":             user.get("region"),
+    }
 
 
 @app.get("/images/{filename}")
@@ -192,6 +248,49 @@ async def stats(current_user: dict = Depends(get_current_user)):
         **get_cache_stats(),
         "model_mode": get_mode(),
     }
+
+# ---------------------------------------------------------------------------
+# Admin routes — require admin role
+# ---------------------------------------------------------------------------
+@app.get("/admin/users")
+async def admin_list_users(
+    limit: int = 100,
+    offset: int = 0,
+    current_user: dict = Depends(require_admin),
+):
+    """Return all users (admin only)."""
+    return get_all_users(limit=limit, offset=offset)
+
+
+@app.get("/admin/users/{user_id}")
+async def admin_get_user(user_id: int, current_user: dict = Depends(require_admin)):
+    """Return a single user by id (admin only)."""
+    user = get_user_by_id(user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
+
+@app.patch("/admin/users/{user_id}/toggle")
+async def admin_toggle_user(user_id: int, current_user: dict = Depends(require_admin)):
+    """Flip is_active for a user (admin only)."""
+    try:
+        return toggle_user_active(user_id)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="User not found")
+
+
+@app.get("/admin/overview")
+async def admin_overview(current_user: dict = Depends(require_admin)):
+    """Return system overview: user counts, scan stats, model mode (admin only)."""
+    return {
+        "user_counts":         get_user_count_by_role(),
+        "scan_stats":          get_stats(),
+        "model_mode":          get_mode(),
+        "supported_languages": SUPPORTED_LANGUAGES,
+        "version":             "1.0.0",
+    }
+
 
 # ---------------------------------------------------------------------------
 # Public routes — no token required

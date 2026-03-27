@@ -65,4 +65,17 @@ SECRET_KEY=
 - Fast exits: healthy plants and low confidence (<60%) skip Claude entirely
 - Fallback: if Claude API fails, build response from treatments.json directly
 - Farmer never sees an error — always gets a useful response
-```
+
+## User Roles
+- farmer: can diagnose, view own history, update preferred language
+- admin: can view all users, stats, toggle user active status
+
+## Supported Languages
+english, hindi, nepali, french, bengali, punjabi, tamil
+
+## New Endpoints
+- PATCH /me/language — update preferred language
+- GET /admin/users — list all users (admin only)
+- GET /admin/users/{id} — get user by id (admin only)
+- PATCH /admin/users/{id}/toggle — activate/deactivate user (admin only)
+- GET /admin/overview — full system overview (admin only)

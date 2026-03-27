@@ -55,6 +55,17 @@ if "users" not in db.table_names():
         "is_active":     int,   # 1 = active, 0 = disabled
     }, pk="id")
     db["users"].create_index(["email"], unique=True)
+else:
+    # Add columns introduced after the initial schema — ignore if already present
+    for ddl in [
+        "ALTER TABLE users ADD COLUMN role TEXT DEFAULT 'farmer'",
+        "ALTER TABLE users ADD COLUMN preferred_language TEXT DEFAULT 'english'",
+        "ALTER TABLE users ADD COLUMN region TEXT DEFAULT NULL",
+    ]:
+        try:
+            db.execute(ddl)
+        except Exception:
+            pass  # column already exists — safe to ignore
 
 print(f"Database ready: {DB_PATH}")
 
@@ -155,7 +166,14 @@ def get_stats() -> dict:
 # ---------------------------------------------------------------------------
 # User management functions
 # ---------------------------------------------------------------------------
-def create_user(email: str, password_hash: str, full_name: str) -> dict:
+def create_user(
+    email: str,
+    password_hash: str,
+    full_name: str,
+    role: str = "farmer",
+    preferred_language: str = "english",
+    region: str = None,
+) -> dict:
     """Insert a new user and return their record (without password_hash).
 
     Raises ValueError if the email is already registered.
@@ -164,21 +182,27 @@ def create_user(email: str, password_hash: str, full_name: str) -> dict:
         raise ValueError("Email already registered")
 
     row = {
-        "email":         email,
-        "password_hash": password_hash,
-        "full_name":     full_name,
-        "created_at":    datetime.now(timezone.utc).isoformat(),
-        "is_active":     1,
+        "email":              email,
+        "password_hash":      password_hash,
+        "full_name":          full_name,
+        "created_at":         datetime.now(timezone.utc).isoformat(),
+        "is_active":          1,
+        "role":               role,
+        "preferred_language": preferred_language,
+        "region":             region,
     }
     db["users"].insert(row)
     user_id = db.execute("SELECT last_insert_rowid()").fetchone()[0]
 
     return {
-        "id":         user_id,
-        "email":      email,
-        "full_name":  full_name,
-        "created_at": row["created_at"],
-        "is_active":  1,
+        "id":                 user_id,
+        "email":              email,
+        "full_name":          full_name,
+        "created_at":         row["created_at"],
+        "is_active":          1,
+        "role":               role,
+        "preferred_language": preferred_language,
+        "region":             region,
     }
 
 
@@ -196,3 +220,47 @@ def get_user_by_id(user_id: int) -> dict | None:
     user = rows[0]
     user.pop("password_hash", None)
     return user
+
+
+def update_user_language(user_id: int, language: str) -> dict:
+    """Update preferred_language for a user and return the updated record."""
+    db["users"].update(user_id, {"preferred_language": language})
+    return get_user_by_id(user_id)
+
+
+def get_all_users(limit: int = 100, offset: int = 0) -> list:
+    """Return all users without password_hash, ordered by created_at DESC."""
+    rows = db.execute(
+        """
+        SELECT id, email, full_name, role, preferred_language, region, created_at, is_active
+        FROM users
+        ORDER BY created_at DESC
+        LIMIT ? OFFSET ?
+        """,
+        [limit, offset]
+    ).fetchall()
+    columns = ["id", "email", "full_name", "role", "preferred_language", "region", "created_at", "is_active"]
+    return [dict(zip(columns, row)) for row in rows]
+
+
+def get_user_count_by_role() -> dict:
+    """Return user counts grouped by role plus a total."""
+    rows = db.execute(
+        "SELECT role, COUNT(*) FROM users GROUP BY role"
+    ).fetchall()
+    counts = {row[0]: row[1] for row in rows}
+    return {
+        "farmer": counts.get("farmer", 0),
+        "admin":  counts.get("admin", 0),
+        "total":  sum(counts.values()),
+    }
+
+
+def toggle_user_active(user_id: int) -> dict:
+    """Flip is_active between 0 and 1 for a user. Returns updated record."""
+    row = db.execute("SELECT is_active FROM users WHERE id = ?", [user_id]).fetchone()
+    if row is None:
+        raise ValueError(f"User {user_id} not found")
+    new_state = 0 if row[0] == 1 else 1
+    db["users"].update(user_id, {"is_active": new_state})
+    return get_user_by_id(user_id)
