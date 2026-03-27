@@ -2,7 +2,7 @@
 
 ## What is this?
 
-AI-powered plant disease detection API for rural farmers in South Asia. A farmer photographs a sick leaf, the system identifies the disease using a MobileNetV2 CNN model, and returns organic treatment advice in the farmer's local language — all within seconds.
+AI-powered plant disease detection API for rural farmers. A farmer photographs a sick leaf, the system identifies the disease using a MobileNetV2 CNN model, and returns organic treatment advice in the farmer's local language — all within seconds.
 
 ---
 
