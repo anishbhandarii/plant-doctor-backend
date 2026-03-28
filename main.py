@@ -19,9 +19,9 @@ from slowapi.util import get_remote_address
 from analyzer import get_cache_stats, get_treatment
 from auth import create_token, get_current_user, hash_password, require_admin, verify_password
 from database import (
-    create_user, get_all_users, get_history, get_stats,
+    create_user, delete_scan, get_all_users, get_history, get_stats,
     get_user_by_email, get_user_by_id, get_user_count_by_role,
-    save_scan, toggle_user_active, update_user_language,
+    get_user_stats, save_scan, toggle_user_active, update_user_language,
 )
 from detector import detect_disease, get_mode
 from fastapi.responses import FileResponse
@@ -32,7 +32,7 @@ from storage import get_image_path, save_image
 # ---------------------------------------------------------------------------
 ALLOWED_TYPES = {"image/jpeg", "image/png", "image/jpg", "image/webp"}
 MAX_SIZE = int(os.getenv("MAX_FILE_SIZE_MB", "5")) * 1024 * 1024
-SUPPORTED_LANGUAGES = ["english", "hindi", "nepali", "french", "bengali", "punjabi", "tamil"]
+SUPPORTED_LANGUAGES = ["english", "hindi", "nepali", "french","german", "korean", "chinese"]
 
 # ---------------------------------------------------------------------------
 # Pydantic models
@@ -69,6 +69,7 @@ app.add_middleware(
     allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # ---------------------------------------------------------------------------
@@ -76,7 +77,7 @@ app.add_middleware(
 # ---------------------------------------------------------------------------
 @app.on_event("startup")
 async def startup():
-    with open("treatments.json") as f:
+    with open("treatments.json", encoding="utf-8") as f:
         count = len(json.load(f))
     print("-------------------------------")
     print("  PlantDoctor API started")
@@ -165,12 +166,26 @@ async def diagnose(
         user_id    = current_user["user_id"]
         session_id = str(user_id)
 
+        # If vision corrected the diagnosis, override TFLite values before saving
+        if (
+            advice.get("result_type") == "model_plus_vision_review"
+            and advice.get("verified") is False
+            and advice.get("confirmed_crop")
+            and advice.get("confirmed_disease")
+        ):
+            detection["crop"]      = advice["confirmed_crop"]
+            detection["disease"]   = advice["confirmed_disease"]
+            detection["raw_label"] = (
+                f"{advice['confirmed_crop']}___"
+                f"{advice['confirmed_disease'].replace(' ', '_')}"
+            )
+
         # Save image first (use unix timestamp as temp scan_id), then save scan record
         image_info = save_image(image_bytes, user_id, int(datetime.now().timestamp()))
-        scan_id    = save_scan(detection, advice, language, session_id, image_info)
 
-        return {
-            "scan_id":            scan_id,
+        # Build the full response so it can be stored and returned identically
+        full_result = {
+            "scan_id":            0,  # placeholder — updated after insert
             "timestamp":          datetime.now(timezone.utc).isoformat(),
             "user_id":            user_id,
             "language":           language,
@@ -181,6 +196,10 @@ async def diagnose(
             "compressed_size_kb": image_info["compressed_size_kb"],
             "compression_ratio":  image_info["compression_ratio"],
         }
+
+        scan_id = save_scan(detection, advice, language, session_id, image_info, full_response=full_result)
+        full_result["scan_id"] = scan_id
+        return full_result
     except HTTPException:
         raise
     except Exception as e:
@@ -193,10 +212,35 @@ async def diagnose(
 
 @app.get("/history")
 async def history(current_user: dict = Depends(get_current_user)):
-    """Return the last 20 scans for the logged-in user."""
+    """Return the last 20 scans for the logged-in user, with full treatment data merged in."""
     user_id = current_user["user_id"]
     scans = get_history(session_id=str(user_id), limit=20)
-    return {"user_id": user_id, "scans": scans}
+
+    enriched = []
+    for scan in scans:
+        enriched_scan = {k: v for k, v in scan.items() if k != "full_response"}
+        if scan.get("full_response"):
+            enriched_scan.update(scan["full_response"])
+        # Preserve the real database id even if older stored payloads contain scan_id=0.
+        enriched_scan["scan_id"] = scan["scan_id"]
+        enriched.append(enriched_scan)
+
+    return {"user_id": user_id, "scans": enriched}
+
+
+@app.delete("/history/{scan_id}")
+async def delete_history_scan(scan_id: int, current_user: dict = Depends(get_current_user)):
+    """Delete a scan owned by the logged-in user."""
+    deleted = delete_scan(scan_id=scan_id, user_id=current_user["user_id"])
+    if not deleted:
+        raise HTTPException(status_code=404, detail="Scan not found")
+    return {"message": "Scan deleted"}
+
+
+@app.get("/me/stats")
+async def me_stats(current_user: dict = Depends(get_current_user)):
+    """Return scan statistics for the currently logged-in user."""
+    return get_user_stats(current_user["user_id"])
 
 
 @app.get("/me")
@@ -231,18 +275,29 @@ async def update_language(body: LanguageUpdateRequest, current_user: dict = Depe
     }
 
 
+
+@app.get("/images/test")
+async def images_test():
+    """Debug endpoint — lists files in data/images/ with no auth required."""
+    try:
+        files = os.listdir("./data/images")
+    except FileNotFoundError:
+        files = []
+    return {"count": len(files), "files": sorted(files)}
+
+
 @app.get("/images/{filename}")
 async def serve_image(filename: str, current_user: dict = Depends(get_current_user)):
     """Return a saved leaf image by filename. Requires login."""
     path = get_image_path(filename)
     if path is None:
         raise HTTPException(status_code=404, detail="Image not found")
-    return FileResponse(path, media_type="image/jpeg")
+    return FileResponse(path, media_type="image/jpeg", headers={"Cache-Control": "max-age=3600"})
 
 
 @app.get("/stats")
-async def stats(current_user: dict = Depends(get_current_user)):
-    """Return aggregated scan stats, cache stats, and model mode. Requires login."""
+async def stats(current_user: dict = Depends(require_admin)):
+    """Return aggregated scan stats, cache stats, and model mode. Admin only."""
     return {
         **get_stats(),
         **get_cache_stats(),
@@ -298,7 +353,7 @@ async def admin_overview(current_user: dict = Depends(require_admin)):
 @app.get("/diseases")
 async def diseases():
     """Return all known diseases grouped by crop name."""
-    with open("treatments.json") as f:
+    with open("treatments.json", encoding="utf-8") as f:
         treatments = json.load(f)
 
     grouped: dict[str, list[str]] = {}

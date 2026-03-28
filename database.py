@@ -1,5 +1,6 @@
 # database.py — SQLite scan history and stats using sqlite-utils
 
+import json
 import os
 from datetime import datetime, timezone
 
@@ -18,7 +19,7 @@ db = sqlite_utils.Database(DB_PATH)
 # Create scans table if it does not already exist
 if "scans" not in db.table_names():
     db["scans"].create({
-        "id":           int,
+        "scan_id":           int,
         "timestamp":    str,
         "session_id":   str,
         "crop":         str,
@@ -31,13 +32,15 @@ if "scans" not in db.table_names():
         "spread_risk":  str,
         "mode":         str,   # "real" or "mock"
         "result_type":  str,   # tier label
-    }, pk="id")
+    }, pk="scan_id")
 else:
     # Add columns introduced after the initial schema — ignore if already present
     for ddl in [
         "ALTER TABLE scans ADD COLUMN result_type TEXT DEFAULT 'model_plus_llm'",
         "ALTER TABLE scans ADD COLUMN image_filename TEXT DEFAULT NULL",
         "ALTER TABLE scans ADD COLUMN compressed_size_kb REAL DEFAULT NULL",
+        "ALTER TABLE scans ADD COLUMN treatment_type TEXT DEFAULT 'organic'",
+        "ALTER TABLE scans ADD COLUMN full_response TEXT DEFAULT NULL",
     ]:
         try:
             db.execute(ddl)
@@ -70,10 +73,38 @@ else:
 print(f"Database ready: {DB_PATH}")
 
 
+def backfill_scan_ids_in_full_response() -> int:
+    """Rewrite stored full_response payloads so scan_id matches the real row id."""
+    rows = db.execute(
+        "SELECT id, full_response FROM scans WHERE full_response IS NOT NULL"
+    ).fetchall()
+
+    updated = 0
+    for scan_id, raw_full_response in rows:
+        try:
+            parsed = json.loads(raw_full_response)
+        except Exception:
+            continue
+
+        if not isinstance(parsed, dict) or parsed.get("scan_id") == scan_id:
+            continue
+
+        parsed["scan_id"] = scan_id
+        db["scans"].update(scan_id, {"full_response": json.dumps(parsed)})
+        updated += 1
+
+    return updated
+
+
+backfilled_scan_ids = backfill_scan_ids_in_full_response()
+if backfilled_scan_ids:
+    print(f"Backfilled scan ids in {backfilled_scan_ids} stored history rows")
+
+
 # ---------------------------------------------------------------------------
 # Function 1: save a scan record
 # ---------------------------------------------------------------------------
-def save_scan(detection: dict, advice: dict, language: str, session_id: str, image_info: dict = None) -> int:
+def save_scan(detection: dict, advice: dict, language: str, session_id: str, image_info: dict = None, full_response: dict = None) -> int:
     """Insert one scan result into the scans table and return its new id."""
     # Pull spread_risk from the treatments data if analyzer loaded it,
     # otherwise leave blank — we import here to avoid circular issues at top level
@@ -95,10 +126,18 @@ def save_scan(detection: dict, advice: dict, language: str, session_id: str, ima
         "result_type":        advice.get("result_type", "model_plus_llm"),
         "image_filename":     image_info.get("image_filename") if image_info else None,
         "compressed_size_kb": image_info.get("compressed_size_kb") if image_info else None,
+        "treatment_type":     "organic",
+        "full_response":      None,
     }
 
     db["scans"].insert(row)
-    return db.execute("SELECT last_insert_rowid()").fetchone()[0]
+    scan_id = db.execute("SELECT last_insert_rowid()").fetchone()[0]
+
+    if full_response:
+        stored_response = {**full_response, "scan_id": scan_id}
+        db["scans"].update(scan_id, {"full_response": json.dumps(stored_response)})
+
+    return scan_id
 
 
 # ---------------------------------------------------------------------------
@@ -108,7 +147,20 @@ def get_history(session_id: str, limit: int = 20) -> list:
     """Return up to {limit} most recent scans for a session, newest first."""
     rows = db.execute(
         """
-        SELECT timestamp, crop, disease, health_score, urgency, language, mode, confidence, image_filename
+        SELECT
+            id AS scan_id,
+            timestamp,
+            crop,
+            disease,
+            health_score,
+            urgency,
+            language,
+            mode,
+            confidence,
+            image_filename,
+            is_healthy,
+            result_type,
+            full_response
         FROM scans
         WHERE session_id = ?
         ORDER BY timestamp DESC
@@ -117,8 +169,40 @@ def get_history(session_id: str, limit: int = 20) -> list:
         [session_id, limit]
     ).fetchall()
 
-    columns = ["timestamp", "crop", "disease", "health_score", "urgency", "language", "mode", "confidence", "image_filename"]
-    return [dict(zip(columns, row)) for row in rows]
+    columns = [
+        "scan_id",
+        "timestamp",
+        "crop",
+        "disease",
+        "health_score",
+        "urgency",
+        "language",
+        "mode",
+        "confidence",
+        "image_filename",
+        "is_healthy",
+        "result_type",
+        "full_response",
+    ]
+    result = []
+    for row in rows:
+        record = dict(zip(columns, row))
+        if record["full_response"]:
+            try:
+                record["full_response"] = json.loads(record["full_response"])
+            except Exception:
+                record["full_response"] = None
+        result.append(record)
+    return result
+
+
+def delete_scan(scan_id: int, user_id: int) -> bool:
+    """Delete a scan owned by the given user. Returns True if deleted."""
+    cursor = db.execute(
+        "DELETE FROM scans WHERE id = ? AND session_id = ?",
+        [scan_id, str(user_id)],
+    )
+    return cursor.rowcount > 0
 
 
 # ---------------------------------------------------------------------------
@@ -253,6 +337,52 @@ def get_user_count_by_role() -> dict:
         "farmer": counts.get("farmer", 0),
         "admin":  counts.get("admin", 0),
         "total":  sum(counts.values()),
+    }
+
+
+def get_user_stats(user_id: int) -> dict:
+    """Return scan statistics for a single user."""
+    from datetime import timedelta
+    session_id = str(user_id)
+
+    totals = db.execute(
+        "SELECT COUNT(*), SUM(is_healthy), AVG(confidence) FROM scans WHERE session_id = ?",
+        [session_id],
+    ).fetchone()
+
+    total    = totals[0] or 0
+    healthy  = int(totals[1] or 0)
+    avg_conf = totals[2]
+
+    top_rows = db.execute(
+        """SELECT disease, COUNT(*) as cnt
+           FROM scans
+           WHERE session_id = ? AND is_healthy = 0
+           GROUP BY disease
+           ORDER BY cnt DESC
+           LIMIT 5""",
+        [session_id],
+    ).fetchall()
+
+    high_urgency = db.execute(
+        "SELECT COUNT(*) FROM scans WHERE session_id = ? AND urgency = 'high'",
+        [session_id],
+    ).fetchone()[0]
+
+    week_ago = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
+    recent = db.execute(
+        "SELECT COUNT(*) FROM scans WHERE session_id = ? AND timestamp > ?",
+        [session_id, week_ago],
+    ).fetchone()[0]
+
+    return {
+        "total_scans":        total,
+        "healthy_count":      healthy,
+        "diseased_count":     total - healthy,
+        "avg_confidence":     round(avg_conf, 1) if avg_conf else 0,
+        "top_diseases":       [{"disease": row[0], "count": row[1]} for row in top_rows],
+        "high_urgency_count": high_urgency,
+        "scans_this_week":    recent,
     }
 
 

@@ -16,9 +16,21 @@
     "urgency": "medium",
     "spread_risk": "high",
     "affects": "leaves, fruit",
-    "local_materials": "neem oil, dish soap, compost, wood ash, water"
+    "local_materials": "neem oil, dish soap, compost, wood ash, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, spray every 7-10 days from bud break",
+        "Copper oxychloride 50WP — mix 3g per litre of water, spray before and after rain",
+        "Carbendazim 50WP (Bavistin) — mix 1g per litre of water, spray at pink bud stage and petal fall"
+      ],
+      "insecticides": [],
+      "application_timing": "Early morning or late evening; avoid spraying in direct sun or strong wind",
+      "safety_warning": "Always wear gloves, mask and eye protection. Keep children and animals away for 24 hours after spraying. Do not spray near water sources or beehives.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Apple___Black_rot": {
     "common_name": "Apple Black Rot",
     "organic": [
@@ -36,9 +48,21 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "fruit, bark, leaves",
-    "local_materials": "neem oil, dish soap, copper sulfate, water"
+    "local_materials": "neem oil, dish soap, copper sulfate, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Captan 50WP — mix 2g per litre of water, spray every 10-14 days from bud break to harvest",
+        "Thiophanate-methyl 70WP (Topsin-M) — mix 1g per litre of water, apply at petal fall and repeat after 14 days",
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, spray every 7-10 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Apply before rain events when possible; repeat after heavy rain",
+      "safety_warning": "Wear gloves, full-sleeve clothing and a mask. Wash hands and face after handling. Store chemicals in original containers away from food.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Apple___Cedar_apple_rust": {
     "common_name": "Apple Cedar Rust",
     "organic": [
@@ -56,9 +80,21 @@
     "urgency": "medium",
     "spread_risk": "medium",
     "affects": "leaves, fruit",
-    "local_materials": "neem oil, dish soap, baking soda, copper sulfate, water"
+    "local_materials": "neem oil, dish soap, baking soda, copper sulfate, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Myclobutanil 10WP (Rally) — mix 1g per litre of water, spray at pink bud stage, petal fall, and 7-10 days after",
+        "Propiconazole 25EC (Tilt) — mix 1ml per litre of water, apply at bud break and repeat every 14 days",
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, protective spray every 7-10 days in spring"
+      ],
+      "insecticides": [],
+      "application_timing": "Critical to apply during spring bud break before spores release; early morning preferred",
+      "safety_warning": "Wear gloves, mask and protective clothing. Do not spray near water sources. Keep spray away from eyes and skin.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Apple___healthy": {
     "common_name": "Apple Healthy",
     "organic": [],
@@ -71,9 +107,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Blueberry___healthy": {
     "common_name": "Blueberry Healthy",
     "organic": [],
@@ -86,9 +122,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Cherry_(including_sour)___Powdery_mildew": {
     "common_name": "Cherry Powdery Mildew",
     "organic": [
@@ -106,9 +142,21 @@
     "urgency": "medium",
     "spread_risk": "high",
     "affects": "leaves, shoots",
-    "local_materials": "baking soda, dish soap, neem oil, wood ash, water"
+    "local_materials": "baking soda, dish soap, neem oil, wood ash, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Wettable sulfur 80WP — mix 3g per litre of water, spray every 7-10 days when humidity is high",
+        "Myclobutanil 10WP (Rally) — mix 1g per litre of water, apply at first sign of white powder and repeat after 14 days",
+        "Tebuconazole 25EC (Folicur) — mix 1ml per litre of water, spray every 14 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Early morning when temperature is below 30 degrees C; avoid spraying sulfur when temperatures exceed 32 degrees C",
+      "safety_warning": "Sulfur can cause skin and eye irritation — wear full protective gear. Do not mix sulfur with other pesticides. Keep children away for 48 hours.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Cherry_(including_sour)___healthy": {
     "common_name": "Cherry Healthy",
     "organic": [],
@@ -121,9 +169,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {
     "common_name": "Corn Gray Leaf Spot",
     "organic": [
@@ -141,9 +189,21 @@
     "urgency": "medium",
     "spread_risk": "high",
     "affects": "leaves",
-    "local_materials": "neem oil, dish soap, compost, water"
+    "local_materials": "neem oil, dish soap, compost, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Azoxystrobin 23SC (Amistar) — mix 1ml per litre of water, apply at first sign of lesions and repeat after 14 days",
+        "Propiconazole 25EC (Tilt) — mix 1ml per litre of water, spray from flag leaf stage every 14 days",
+        "Chlorothalonil 75WP (Daconil) — mix 2g per litre of water, spray preventively every 10-14 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Apply in early morning or evening; use knapsack sprayer to reach lower leaves",
+      "safety_warning": "Wear gloves, mask and protective clothing. Chlorothalonil is a strong irritant — avoid inhaling spray mist. Do not enter the field for 12 hours.",
+      "reentry_interval": "12 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Corn_(maize)___Common_rust": {
     "common_name": "Corn Common Rust",
     "organic": [
@@ -161,9 +221,21 @@
     "urgency": "medium",
     "spread_risk": "high",
     "affects": "leaves",
-    "local_materials": "neem oil, dish soap, wood ash, garlic, water"
+    "local_materials": "neem oil, dish soap, wood ash, garlic, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Propiconazole 25EC (Tilt) — mix 1ml per litre of water, spray at first rust pustule appearance; repeat after 14 days",
+        "Azoxystrobin 23SC (Amistar) — mix 1ml per litre of water, preventive spray from tasseling stage",
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, spray every 7-10 days as protection"
+      ],
+      "insecticides": [],
+      "application_timing": "Best applied in the early morning before dew dries; high volume spray for good canopy penetration",
+      "safety_warning": "Wear gloves and a mask when mixing and spraying. Wash spray equipment thoroughly after use. Keep chemicals locked away from children.",
+      "reentry_interval": "12 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Corn_(maize)___Northern_Leaf_Blight": {
     "common_name": "Corn Northern Leaf Blight",
     "organic": [
@@ -181,9 +253,21 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "leaves",
-    "local_materials": "neem oil, dish soap, copper sulfate, compost, water"
+    "local_materials": "neem oil, dish soap, copper sulfate, compost, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Azoxystrobin 23SC (Amistar) — mix 1ml per litre of water, spray at flag leaf emergence; repeat after 14 days",
+        "Propiconazole 25EC (Tilt) — mix 1ml per litre of water, apply at first sign of grey-green lesions",
+        "Chlorothalonil 75WP (Daconil) — mix 2g per litre of water, preventive spray every 10 days during humid weather"
+      ],
+      "insecticides": [],
+      "application_timing": "Apply early morning; ensure good coverage of all leaf surfaces including lower canopy",
+      "safety_warning": "Wear full protective clothing including mask and gloves. Avoid breathing spray mist. Wash hands and face thoroughly after application.",
+      "reentry_interval": "12 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Corn_(maize)___healthy": {
     "common_name": "Corn Healthy",
     "organic": [],
@@ -196,9 +280,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Grape___Black_rot": {
     "common_name": "Grape Black Rot",
     "organic": [
@@ -216,9 +300,21 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "fruit, leaves, shoots",
-    "local_materials": "copper sulfate, neem oil, dish soap, water"
+    "local_materials": "copper sulfate, neem oil, dish soap, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, spray every 7-10 days from bud break to harvest",
+        "Captan 50WP — mix 2g per litre of water, apply before and after rain events",
+        "Myclobutanil 10WP (Rally) — mix 1g per litre of water, apply at early shoot growth and repeat every 10-14 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Begin spraying at bud break in spring; timing is critical — apply before infection periods (rain + warm weather)",
+      "safety_warning": "Wear gloves, mask and eye protection. Avoid inhaling Mancozeb dust when mixing. Do not apply within 7 days of harvest.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Grape___Esca_(Black_Measles)": {
     "common_name": "Grape Esca (Black Measles)",
     "organic": [
@@ -236,9 +332,20 @@
     "urgency": "high",
     "spread_risk": "medium",
     "affects": "wood, leaves, fruit",
-    "local_materials": "neem oil, dish soap, wood ash, water"
+    "local_materials": "neem oil, dish soap, wood ash, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Thiophanate-methyl 70WP (Topsin-M) — mix 1g per litre of water, apply as wound protectant immediately after pruning",
+        "Copper oxychloride 50WP — mix 3g per litre of water, spray over pruning cuts and the whole vine in early spring"
+      ],
+      "insecticides": [],
+      "application_timing": "Apply immediately after pruning to seal wounds; spray in dry weather to allow absorption",
+      "safety_warning": "Wear gloves and mask when applying. Thiophanate-methyl is absorbed through skin — avoid prolonged contact. Keep spray away from water sources.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": {
     "common_name": "Grape Leaf Blight",
     "organic": [
@@ -256,9 +363,21 @@
     "urgency": "medium",
     "spread_risk": "medium",
     "affects": "leaves",
-    "local_materials": "neem oil, dish soap, baking soda, copper sulfate, water"
+    "local_materials": "neem oil, dish soap, baking soda, copper sulfate, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, spray every 7-10 days starting at berry set",
+        "Copper oxychloride 50WP — mix 3g per litre of water, apply preventively before expected rain",
+        "Chlorothalonil 75WP (Daconil) — mix 2g per litre of water, spray every 10-14 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Early morning; ensure thorough coverage of both sides of leaves",
+      "safety_warning": "Wear full protective gear. Do not spray near rivers or ponds. Wash all equipment thoroughly after use.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Grape___healthy": {
     "common_name": "Grape Healthy",
     "organic": [],
@@ -271,9 +390,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Orange___Haunglongbing_(Citrus_greening)": {
     "common_name": "Orange Citrus Greening (HLB)",
     "organic": [
@@ -291,9 +410,23 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "whole tree, fruit, leaves",
-    "local_materials": "neem oil, dish soap, garlic, compost, water"
+    "local_materials": "neem oil, dish soap, garlic, compost, water",
+    "inorganic": {
+      "pesticides": [
+        "Imidacloprid 17.8SL (Confidor) — mix 0.5ml per litre of water, spray every 21 days to control Asian citrus psyllid vector",
+        "Thiamethoxam 25WG (Actara) — mix 0.5g per litre of water, spray at flush emergence when psyllids are active"
+      ],
+      "fungicides": [],
+      "insecticides": [
+        "Imidacloprid 17.8SL (Confidor) — mix 0.5ml per litre of water, spray on new flush growth every 21 days",
+        "Dimethoate 30EC — mix 1.5ml per litre of water, spray every 14 days during flush growth to control psyllids"
+      ],
+      "application_timing": "Spray when new leaf flush emerges (every 6-8 weeks); early morning to protect beneficial insects",
+      "safety_warning": "Imidacloprid is highly toxic to bees — do not spray on flowering trees. Wear gloves, mask and goggles. Do not allow children or animals near treated trees for 48 hours.",
+      "reentry_interval": "48 hours",
+      "pre_harvest_interval": "21 days"
+    }
   },
-
   "Peach___Bacterial_spot": {
     "common_name": "Peach Bacterial Spot",
     "organic": [
@@ -311,9 +444,20 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "leaves, fruit, shoots",
-    "local_materials": "copper sulfate, neem oil, dish soap, water"
+    "local_materials": "copper sulfate, neem oil, dish soap, water",
+    "inorganic": {
+      "pesticides": [
+        "Copper hydroxide 77WP (Kocide) — mix 3g per litre of water, spray every 7-10 days from bud swell through harvest",
+        "Oxytetracycline 17WP (Mycoshield) — mix 1g per litre of water, apply at petal fall and twice more at 10-day intervals"
+      ],
+      "fungicides": [],
+      "insecticides": [],
+      "application_timing": "Apply at bud swell in spring before symptoms appear; repeat after rain",
+      "safety_warning": "Wear gloves and mask when mixing copper products — copper dust is a lung irritant. Do not spray near fish ponds. Wash hands thoroughly after use.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Peach___healthy": {
     "common_name": "Peach Healthy",
     "organic": [],
@@ -326,9 +470,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Pepper,_bell___Bacterial_spot": {
     "common_name": "Bell Pepper Bacterial Spot",
     "organic": [
@@ -346,9 +490,21 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "leaves, fruit, stems",
-    "local_materials": "copper sulfate, neem oil, dish soap, water"
+    "local_materials": "copper sulfate, neem oil, dish soap, water",
+    "inorganic": {
+      "pesticides": [
+        "Copper hydroxide 77WP (Kocide) — mix 3g per litre of water, spray every 7-10 days from transplant",
+        "Streptomycin sulfate 9SP (Agrimycin) — mix 1g per litre of water, spray at first sign of water-soaked spots; max 3 applications per season",
+        "Kasugamycin 3SL (Kasumin) — mix 2ml per litre of water, spray every 7 days during wet weather"
+      ],
+      "fungicides": [],
+      "insecticides": [],
+      "application_timing": "Apply early morning; avoid spraying when rain is expected within 4 hours",
+      "safety_warning": "Streptomycin overuse causes resistance — limit to 3 applications per season. Wear gloves and mask. Keep children away for 24 hours.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Pepper,_bell___healthy": {
     "common_name": "Bell Pepper Healthy",
     "organic": [],
@@ -361,9 +517,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Potato___Early_blight": {
     "common_name": "Potato Early Blight",
     "organic": [
@@ -381,9 +537,21 @@
     "urgency": "medium",
     "spread_risk": "high",
     "affects": "leaves, stems, tubers",
-    "local_materials": "neem oil, dish soap, baking soda, wood ash, water"
+    "local_materials": "neem oil, dish soap, baking soda, wood ash, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Chlorothalonil 75WP (Daconil) — mix 2g per litre of water, spray every 7-10 days from canopy closure",
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, preventive spray every 7 days",
+        "Azoxystrobin 23SC (Amistar) — mix 1ml per litre of water, apply at first sign and repeat after 14 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Start preventive sprays 4-6 weeks after planting; spray in early morning for best results",
+      "safety_warning": "Wear gloves, mask and long sleeves. Chlorothalonil can cause skin sensitisation — avoid repeated skin contact. Keep spray away from water bodies.",
+      "reentry_interval": "12 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Potato___Late_blight": {
     "common_name": "Potato Late Blight",
     "organic": [
@@ -401,9 +569,21 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "leaves, stems, tubers",
-    "local_materials": "copper sulfate, neem oil, dish soap, water"
+    "local_materials": "copper sulfate, neem oil, dish soap, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Metalaxyl+Mancozeb 72WP (Ridomil Gold) — mix 2.5g per litre of water, spray every 7 days at first sign; do not use more than 3 times per season",
+        "Cymoxanil+Mancozeb 72WP (Curzate) — mix 2g per litre of water, apply every 7-10 days when conditions favour blight",
+        "Chlorothalonil 75WP (Daconil) — mix 2g per litre of water, protective spray every 7 days in humid weather"
+      ],
+      "insecticides": [],
+      "application_timing": "Act immediately at first symptom — late blight spreads rapidly; spray in early morning or evening",
+      "safety_warning": "Ridomil resistance is common — rotate with other fungicides. Wear full protective gear. Do not spray within 7 days of harvest.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Potato___healthy": {
     "common_name": "Potato Healthy",
     "organic": [],
@@ -416,9 +596,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Raspberry___healthy": {
     "common_name": "Raspberry Healthy",
     "organic": [],
@@ -431,9 +611,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Rice___Bacterial_leaf_blight": {
     "common_name": "Rice Bacterial Leaf Blight",
     "organic": [
@@ -451,9 +631,21 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "leaves, tillers",
-    "local_materials": "copper sulfate, garlic, water"
+    "local_materials": "copper sulfate, garlic, water",
+    "inorganic": {
+      "pesticides": [
+        "Copper hydroxide 77WP (Kocide) — mix 3g per litre of water, spray every 7-10 days on infected tillers",
+        "Streptomycin sulfate 9SP (Agrimycin) — mix 1g per litre of water, spray at first sign of yellow streaks; max 2 applications",
+        "Kasugamycin 3SL (Kasumin) — mix 2ml per litre of water, spray every 7 days during tillering and panicle initiation"
+      ],
+      "fungicides": [],
+      "insecticides": [],
+      "application_timing": "Spray in early morning; ensure thorough coverage of all tillers including water surface where bacteria persist",
+      "safety_warning": "Limit streptomycin to 2 sprays per season to prevent resistance. Wear gloves and mask. Do not contaminate irrigation water used by other farms downstream.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Rice___Brown_spot": {
     "common_name": "Rice Brown Spot",
     "organic": [
@@ -471,9 +663,21 @@
     "urgency": "medium",
     "spread_risk": "medium",
     "affects": "leaves, grains",
-    "local_materials": "neem oil, dish soap, wood ash, compost, water"
+    "local_materials": "neem oil, dish soap, wood ash, compost, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Propiconazole 25EC (Tilt) — mix 1ml per litre of water, spray at booting and heading stages",
+        "Tricyclazole 75WP (Beam) — mix 0.6g per litre of water, apply at first sign of brown oval spots; effective also against blast",
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, protective spray from tillering stage every 10-14 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Apply at booting stage for maximum protection; spray early morning to reduce evaporation loss",
+      "safety_warning": "Wear rubber gloves and a mask when spraying paddy fields. Avoid walking in sprayed fields for 12 hours. Protect skin from prolonged exposure to Propiconazole.",
+      "reentry_interval": "12 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Rice___Leaf_smut": {
     "common_name": "Rice Leaf Smut",
     "organic": [
@@ -491,9 +695,21 @@
     "urgency": "medium",
     "spread_risk": "medium",
     "affects": "leaves, grains",
-    "local_materials": "copper sulfate, neem oil, dish soap, wood ash, water"
+    "local_materials": "copper sulfate, neem oil, dish soap, wood ash, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Carbendazim 50WP (Bavistin) — mix 1g per litre of water, seed treatment: soak seed for 8 hours before planting; foliar spray at tillering",
+        "Tricyclazole 75WP (Beam) — mix 0.6g per litre of water, spray at tillering and booting stages",
+        "Propiconazole 25EC (Tilt) — mix 1ml per litre of water, apply at first sign of black powdery lesions"
+      ],
+      "insecticides": [],
+      "application_timing": "Seed treatment is most effective; foliar spray should begin at early tillering stage",
+      "safety_warning": "Wear gloves when doing seed treatment. Do not allow treated seed to be eaten by animals or birds. Apply foliar sprays in early morning.",
+      "reentry_interval": "12 hours",
+      "pre_harvest_interval": "14 days"
+    }
   },
-
   "Soybean___healthy": {
     "common_name": "Soybean Healthy",
     "organic": [],
@@ -506,9 +722,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Squash___Powdery_mildew": {
     "common_name": "Squash Powdery Mildew",
     "organic": [
@@ -526,9 +742,21 @@
     "urgency": "medium",
     "spread_risk": "high",
     "affects": "leaves, stems",
-    "local_materials": "baking soda, dish soap, neem oil, wood ash, water"
+    "local_materials": "baking soda, dish soap, neem oil, wood ash, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Wettable sulfur 80WP — mix 3g per litre of water, spray every 7-10 days; do not apply when temperature exceeds 32 degrees C",
+        "Carbendazim 50WP (Bavistin) — mix 1g per litre of water, apply at first white powder appearance and repeat after 10 days",
+        "Tebuconazole 25EC (Folicur) — mix 1ml per litre of water, spray every 14 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Spray in early morning or evening; avoid hot midday application especially for sulfur-based products",
+      "safety_warning": "Do not mix sulfur with other pesticides — chemical reactions can damage crops. Wear gloves and mask. Keep spray away from pollinators.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Strawberry___Leaf_scorch": {
     "common_name": "Strawberry Leaf Scorch",
     "organic": [
@@ -546,9 +774,21 @@
     "urgency": "medium",
     "spread_risk": "medium",
     "affects": "leaves",
-    "local_materials": "neem oil, dish soap, copper sulfate, water"
+    "local_materials": "neem oil, dish soap, copper sulfate, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Captan 50WP — mix 2g per litre of water, spray every 10-14 days from early spring through harvest",
+        "Myclobutanil 10WP (Rally) — mix 1g per litre of water, apply at first purple spot appearance; repeat after 14 days",
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, protective spray every 7-10 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Apply in early morning; avoid spraying open flowers to protect pollinators",
+      "safety_warning": "Wear gloves and mask. Captan may irritate skin and eyes — avoid direct contact. Do not spray within 3 days of harvest.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "3 days"
+    }
   },
-
   "Strawberry___healthy": {
     "common_name": "Strawberry Healthy",
     "organic": [],
@@ -561,9 +801,9 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   },
-
   "Tomato___Bacterial_spot": {
     "common_name": "Tomato Bacterial Spot",
     "organic": [
@@ -581,9 +821,21 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "leaves, fruit, stems",
-    "local_materials": "copper sulfate, neem oil, dish soap, water"
+    "local_materials": "copper sulfate, neem oil, dish soap, water",
+    "inorganic": {
+      "pesticides": [
+        "Copper hydroxide 77WP (Kocide) — mix 3g per litre of water, spray every 7-10 days from transplant",
+        "Streptomycin sulfate 9SP (Agrimycin) — mix 1g per litre of water, spray at first symptom; max 3 applications per season",
+        "Kasugamycin 3SL (Kasumin) — mix 2ml per litre of water, spray every 7 days during wet weather"
+      ],
+      "fungicides": [],
+      "insecticides": [],
+      "application_timing": "Spray early morning; apply before expected rain for preventive protection",
+      "safety_warning": "Limit antibiotic sprays to prevent resistance build-up. Wear gloves and mask. Do not apply within 7 days of harvest. Keep spray away from water sources.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Tomato___Early_blight": {
     "common_name": "Tomato Early Blight",
     "organic": [
@@ -600,9 +852,21 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "leaves",
-    "local_materials": "neem oil, wood ash, baking soda, dish soap, water"
+    "local_materials": "neem oil, wood ash, baking soda, dish soap, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, spray every 7-10 days from first symptom",
+        "Chlorothalonil 75WP (Daconil) — mix 2g per litre of water, preventive spray every 7 days in humid weather",
+        "Azoxystrobin 23SC (Amistar) — mix 1ml per litre of water, curative spray at first sign; repeat after 14 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Apply in early morning or evening; ensure good coverage of lower leaves where infection starts",
+      "safety_warning": "Wear gloves, mask and long-sleeve clothing. Mancozeb can cause skin sensitisation with repeated exposure. Do not spray within 7 days of harvest.",
+      "reentry_interval": "12 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Tomato___Late_blight": {
     "common_name": "Tomato Late Blight",
     "organic": [
@@ -620,9 +884,21 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "leaves, stems, fruit",
-    "local_materials": "copper sulfate, neem oil, dish soap, water"
+    "local_materials": "copper sulfate, neem oil, dish soap, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Metalaxyl+Mancozeb 72WP (Ridomil Gold) — mix 2.5g per litre of water, spray every 7 days; limit to 3 applications per season",
+        "Cymoxanil+Mancozeb 72WP (Curzate) — mix 2g per litre of water, apply every 7-10 days during cool wet weather",
+        "Chlorothalonil 75WP (Daconil) — mix 2g per litre of water, protective spray every 5-7 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Act immediately — late blight can destroy a crop within days; spray in early morning or evening",
+      "safety_warning": "Rotate fungicides to prevent Metalaxyl resistance. Wear full protective gear. Do not spray within 7 days of harvest. Dispose of empty containers safely.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Tomato___Leaf_Mold": {
     "common_name": "Tomato Leaf Mold",
     "organic": [
@@ -640,9 +916,21 @@
     "urgency": "medium",
     "spread_risk": "high",
     "affects": "leaves",
-    "local_materials": "baking soda, dish soap, neem oil, water"
+    "local_materials": "baking soda, dish soap, neem oil, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Copper oxychloride 50WP — mix 3g per litre of water, spray every 7-10 days when humidity is high",
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, preventive spray every 7-10 days",
+        "Chlorothalonil 75WP (Daconil) — mix 2g per litre of water, apply at first sign of yellow patches on leaves"
+      ],
+      "insecticides": [],
+      "application_timing": "Apply in early morning; spray inside greenhouse carefully to avoid chemical buildup",
+      "safety_warning": "Wear gloves and mask, especially in enclosed greenhouse environments where spray concentration builds up. Ventilate after spraying.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Tomato___Septoria_leaf_spot": {
     "common_name": "Tomato Septoria Leaf Spot",
     "organic": [
@@ -660,9 +948,21 @@
     "urgency": "medium",
     "spread_risk": "high",
     "affects": "leaves",
-    "local_materials": "copper sulfate, neem oil, dish soap, water"
+    "local_materials": "copper sulfate, neem oil, dish soap, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Chlorothalonil 75WP (Daconil) — mix 2g per litre of water, spray every 7-10 days from first symptom",
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, protective spray every 7 days",
+        "Copper oxychloride 50WP — mix 3g per litre of water, spray every 7-10 days as an alternative"
+      ],
+      "insecticides": [],
+      "application_timing": "Start spraying at first white-centred spots on lower leaves; early morning application preferred",
+      "safety_warning": "Wear gloves, mask and protective clothing. Chlorothalonil is a strong irritant — minimise inhalation and skin contact. Store locked away from food.",
+      "reentry_interval": "12 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Tomato___Spider_mites Two-spotted_spider_mite": {
     "common_name": "Tomato Spider Mites",
     "organic": [
@@ -680,9 +980,21 @@
     "urgency": "medium",
     "spread_risk": "high",
     "affects": "leaves",
-    "local_materials": "neem oil, dish soap, garlic, chili, wood ash, water"
+    "local_materials": "neem oil, dish soap, garlic, chili, wood ash, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [],
+      "insecticides": [
+        "Abamectin 1.8EC (Vertimec) — mix 0.5ml per litre of water, spray focusing on leaf undersides; repeat after 7 days",
+        "Spiromesifen 22.9SC (Oberon) — mix 1ml per litre of water, spray thoroughly on all leaf surfaces every 7-10 days",
+        "Propargite 57EC (Omite) — mix 2ml per litre of water, spray in early morning every 7 days"
+      ],
+      "application_timing": "Spray in early morning focusing on the undersides of leaves where mites live and breed",
+      "safety_warning": "Abamectin is highly toxic to bees and aquatic organisms — do not spray near water or flowering plants. Wear gloves, mask and protective clothing. Do not re-enter field for 12 hours.",
+      "reentry_interval": "12 hours",
+      "pre_harvest_interval": "3 days"
+    }
   },
-
   "Tomato___Target_Spot": {
     "common_name": "Tomato Target Spot",
     "organic": [
@@ -700,9 +1012,21 @@
     "urgency": "medium",
     "spread_risk": "medium",
     "affects": "leaves, fruit, stems",
-    "local_materials": "copper sulfate, neem oil, dish soap, water"
+    "local_materials": "copper sulfate, neem oil, dish soap, water",
+    "inorganic": {
+      "pesticides": [],
+      "fungicides": [
+        "Azoxystrobin 23SC (Amistar) — mix 1ml per litre of water, apply at first sign of concentric ring spots; repeat after 14 days",
+        "Chlorothalonil 75WP (Daconil) — mix 2g per litre of water, preventive spray every 7-10 days",
+        "Mancozeb 75WP (Dithane M-45) — mix 2.5g per litre of water, spray every 7-10 days"
+      ],
+      "insecticides": [],
+      "application_timing": "Apply in early morning; ensure good spray coverage from bottom to top of plant canopy",
+      "safety_warning": "Wear full protective clothing when applying. Rotate fungicide classes to prevent resistance. Do not spray within 7 days of harvest.",
+      "reentry_interval": "12 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
     "common_name": "Tomato Yellow Leaf Curl Virus",
     "organic": [
@@ -720,9 +1044,24 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "whole plant",
-    "local_materials": "neem oil, dish soap, garlic, chili, water"
+    "local_materials": "neem oil, dish soap, garlic, chili, water",
+    "inorganic": {
+      "pesticides": [
+        "Imidacloprid 17.8SL (Confidor) — mix 0.5ml per litre of water, spray every 14-21 days to control whitefly vector",
+        "Thiamethoxam 25WG (Actara) — mix 0.5g per litre of water, spray at transplanting and repeat every 21 days"
+      ],
+      "fungicides": [],
+      "insecticides": [
+        "Imidacloprid 17.8SL (Confidor) — mix 0.5ml per litre of water, spray every 14-21 days to control whitefly",
+        "Thiamethoxam 25WG (Actara) — mix 0.5g per litre of water, foliar or soil drench at transplant stage",
+        "Spinosad 45SC (Success) — mix 0.5ml per litre of water, spray every 7-10 days as a safer alternative"
+      ],
+      "application_timing": "Start insecticide programme at transplanting; spray early morning to avoid harming pollinators",
+      "safety_warning": "Imidacloprid is highly toxic to bees — never apply on flowering plants. Wear gloves, goggles and mask. Do not spray near beehives. Keep children away for 48 hours.",
+      "reentry_interval": "48 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Tomato___Tomato_mosaic_virus": {
     "common_name": "Tomato Mosaic Virus",
     "organic": [
@@ -740,9 +1079,23 @@
     "urgency": "high",
     "spread_risk": "high",
     "affects": "whole plant",
-    "local_materials": "neem oil, dish soap, water"
+    "local_materials": "neem oil, dish soap, water",
+    "inorganic": {
+      "pesticides": [
+        "Imidacloprid 17.8SL (Confidor) — mix 0.5ml per litre of water, spray every 14 days to control aphid and whitefly vectors",
+        "Mineral oil (white oil) 3% solution — mix 30ml per litre of water, spray to reduce aphid feeding and virus spread"
+      ],
+      "fungicides": [],
+      "insecticides": [
+        "Imidacloprid 17.8SL (Confidor) — mix 0.5ml per litre of water, spray every 14 days to control aphid vectors",
+        "Acetamiprid 20SP (Mospilan) — mix 0.5g per litre of water, spray at first aphid sighting and repeat after 10 days"
+      ],
+      "application_timing": "Begin vector control early — spray at transplanting and continue every 14 days throughout the season",
+      "safety_warning": "No chemical can cure mosaic virus — insecticides only prevent further spread by vectors. Wear gloves and mask. Keep spray away from eyes. Do not apply near water sources.",
+      "reentry_interval": "24 hours",
+      "pre_harvest_interval": "7 days"
+    }
   },
-
   "Tomato___healthy": {
     "common_name": "Tomato Healthy",
     "organic": [],
@@ -754,6 +1107,7 @@
     "urgency": "none",
     "spread_risk": "none",
     "affects": "none",
-    "local_materials": ""
+    "local_materials": "",
+    "inorganic": {}
   }
 }
