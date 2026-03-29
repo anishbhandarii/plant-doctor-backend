@@ -75,10 +75,22 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:
 
 
 async def require_admin(current_user: dict = Depends(get_current_user)) -> dict:
-    """FastAPI dependency that requires the caller to have the admin role."""
-    if current_user["role"] != "admin":
+    """FastAPI dependency that requires the caller to have the admin role.
+
+    Checks both the JWT claim and the live database record so that a token
+    issued before a role demotion cannot be used to access admin endpoints.
+    """
+    if current_user.get("role") != "admin":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Access denied. Admin account required."
+        )
+    # Verify the role is still admin in the database (token may be stale)
+    from database import get_user_by_id
+    db_user = get_user_by_id(current_user["user_id"])
+    if not db_user or db_user.get("role") != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Access denied. Admin privileges revoked."
         )
     return current_user

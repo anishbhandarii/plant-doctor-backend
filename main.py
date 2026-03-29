@@ -41,6 +41,13 @@ class RegisterRequest(BaseModel):
     email: str
     password: str
     full_name: str
+    preferred_language: str = "english"
+    region: str = None
+
+class AdminCreateUserRequest(BaseModel):
+    email: str
+    password: str
+    full_name: str
     role: str = "farmer"
     preferred_language: str = "english"
     region: str = None
@@ -91,11 +98,9 @@ async def startup():
 # ---------------------------------------------------------------------------
 @app.post("/auth/register")
 async def register(body: RegisterRequest):
-    """Create a new user account."""
+    """Create a new farmer account. Role is always farmer — admins are created separately."""
     if len(body.password) < 8:
         raise HTTPException(status_code=400, detail="Password must be at least 8 characters")
-    if body.role not in ["farmer", "admin"]:
-        raise HTTPException(status_code=400, detail="Role must be farmer or admin")
     if body.preferred_language not in SUPPORTED_LANGUAGES:
         raise HTTPException(status_code=400, detail=f"Language must be one of: {SUPPORTED_LANGUAGES}")
     try:
@@ -103,7 +108,7 @@ async def register(body: RegisterRequest):
             email=body.email,
             password_hash=hash_password(body.password),
             full_name=body.full_name,
-            role=body.role,
+            role="farmer",   # always farmer — role cannot be set via public registration
             preferred_language=body.preferred_language,
             region=body.region,
         )
@@ -307,6 +312,29 @@ async def stats(current_user: dict = Depends(require_admin)):
 # ---------------------------------------------------------------------------
 # Admin routes — require admin role
 # ---------------------------------------------------------------------------
+@app.post("/admin/users/create")
+async def admin_create_user(body: AdminCreateUserRequest, current_user: dict = Depends(require_admin)):
+    """Create a farmer or admin account. Only existing admins can do this."""
+    if len(body.password) < 8:
+        raise HTTPException(status_code=400, detail="Password must be at least 8 characters")
+    if body.role not in ["farmer", "admin"]:
+        raise HTTPException(status_code=400, detail="Role must be farmer or admin")
+    if body.preferred_language not in SUPPORTED_LANGUAGES:
+        raise HTTPException(status_code=400, detail=f"Language must be one of: {SUPPORTED_LANGUAGES}")
+    try:
+        user = create_user(
+            email=body.email,
+            password_hash=hash_password(body.password),
+            full_name=body.full_name,
+            role=body.role,
+            preferred_language=body.preferred_language,
+            region=body.region,
+        )
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return {"message": f"{body.role.title()} account created", "email": user["email"], "role": user["role"]}
+
+
 @app.get("/admin/users")
 async def admin_list_users(
     limit: int = 100,
